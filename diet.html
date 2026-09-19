@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    BeyondGains NutriCore — Diet Builder
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="./style.css"
+  >
+
+</head>
+
+
+<body>
+
+<header class="navbar">
+
+  <a
+    href="./index.html"
+    class="logo"
+  >
+
+    <span class="logo-mark">
+      BG
+    </span>
+
+    <span class="logo-copy">
+
+      <span class="logo-top">
+        BEYONDGAINS
+      </span>
+
+      <span class="logo-main">
+        NutriCore
+      </span>
+
+    </span>
+
+  </a>
+
+
+  <nav class="nav-links">
+
+    <a
+      href="./index.html"
+      class="nav-link"
+    >
+      Calculator
+    </a>
+
+    <a
+      href="./diet.html"
+      class="nav-link active"
+    >
+      Diet Builder
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<main class="page">
+
+  <section class="diet-hero">
+
+    <div>
+
+      <p class="eyebrow">
+        DAILY NUTRITION
+      </p>
+
+      <h1>
+        Build your diet from
+        <span>real food.</span>
+      </h1>
+
+      <p id="dietTypeDisplay">
+
+        Fruits, vegetables, dals,
+        pulses, sprouts, grains,
+        proteins, Indian meals and drinks.
+
+      </p>
+
+
+      <div class="diet-badges">
+
+        <span>
+          Fruits
+        </span>
+
+        <span>
+          Vegetables
+        </span>
+
+        <span>
+          Dals & Pulses
+        </span>
+
+        <span>
+          Sprouts
+        </span>
+
+        <span>
+          Protein
+        </span>
+
+        <span>
+          Indian Meals
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="target-orbit">
+
+      <div class="target-ring">
+
+        <span>
+          Daily energy
+        </span>
+
+        <strong id="targetCalories">
+          —
+        </strong>
+
+        <small>
+          kcal
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <section class="dashboard-grid">
+
+    <article class="dashboard-card">
+
+      <div class="dashboard-icon">
+        P
+      </div>
+
+      <div>
+
+        <span>
+          Protein
+        </span>
+
+        <strong id="targetProtein">
+          —
+        </strong>
+
+      </div>
+
+    </article>
+
+
+    <article class="dashboard-card">
+
+      <div class="dashboard-icon">
+        C
+      </div>
+
+      <div>
+
+        <span>
+          Carbohydrates
+        </span>
+
+        <strong id="targetCarbs">
+          —
+        </strong>
+
+      </div>
+
+    </article>
+
+
+    <article class="dashboard-card">
+
+      <div class="dashboard-icon">
+        F
+      </div>
+
+      <div>
+
+        <span>
+          Fat
+        </span>
+
+        <strong id="targetFat">
+          —
+        </strong>
+
+      </div>
+
+    </article>
+
+
+    <article class="dashboard-card">
+
+      <div class="dashboard-icon">
+        Fi
+      </div>
+
+      <div>
+
+        <span>
+          Fibre
+        </span>
+
+        <strong id="targetFibre">
+          —
+        </strong>
+
+      </div>
+
+    </article>
+
+  </section>
+
+
+
+  <section class="quick-section">
+
+    <div class="section-heading">
+
+      <div>
+
+        <p class="eyebrow">
+          QUICK ADD
+        </p>
+
+        <h2>
+          Everyday foods
+        </h2>
+
+      </div>
+
+      <p>
+        Select a food to calculate your serving.
+      </p>
+
+    </div>
+
+
+    <div
+      id="quickFoodGrid"
+      class="quick-food-grid"
+    ></div>
+
+  </section>
+
+
+
+  <section class="food-layout">
+
+    <div class="food-browser">
+
+      <div class="food-browser-head">
+
+        <div>
+
+          <p class="eyebrow">
+            FOOD LIBRARY
+          </p>
+
+          <h2>
+            Find your food
+          </h2>
+
+        </div>
+
+
+        <span
+          id="foodCount"
+          class="food-count"
+        >
+          0 foods
+        </span>
+
+      </div>
+
+
+      <div class="search-shell">
+
+        <span class="search-symbol">
+          ⌕
+        </span>
+
+        <input
+          id="foodSearch"
+          type="search"
+          placeholder="Search moong, sprouts, peas, mango, chicken..."
+        >
+
+      </div>
+
+
+      <div
+        id="filterRow"
+        class="filter-row"
+      ></div>
+
+
+      <div
+        id="foodList"
+        class="food-list"
+      ></div>
+
+    </div>
+
+
+
+    <div class="meal-panel">
+
+      <div class="meal-panel-head">
+
+        <div>
+
+          <p class="eyebrow">
+            TODAY
+          </p>
+
+          <h2>
+            Your intake
+          </h2>
+
+        </div>
+
+
+        <button
+          id="clearMealButton"
+          class="clear-button"
+        >
+          Clear
+        </button>
+
+      </div>
+
+
+      <div
+        id="mealItems"
+        class="meal-items"
+      ></div>
+
+
+      <div class="meal-total-grid">
+
+        <div class="meal-total">
+
+          <span>
+            CALORIES
+          </span>
+
+          <strong id="mealCalories">
+            0 kcal
+          </strong>
+
+        </div>
+
+
+        <div class="meal-total">
+
+          <span>
+            PROTEIN
+          </span>
+
+          <strong id="mealProtein">
+            0 g
+          </strong>
+
+        </div>
+
+
+        <div class="meal-total">
+
+          <span>
+            CARBS
+          </span>
+
+          <strong id="mealCarbs">
+            0 g
+          </strong>
+
+        </div>
+
+
+        <div class="meal-total">
+
+          <span>
+            FAT
+          </span>
+
+          <strong id="mealFat">
+            0 g
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="progress-card">
+
+        <div class="progress-label">
+
+          <div>
+
+            <span>
+              Calories
+            </span>
+
+            <small id="calorieRemainingText">
+              —
+            </small>
+
+          </div>
+
+          <strong id="progressText">
+            0%
+          </strong>
+
+        </div>
+
+
+        <div class="progress-track">
+
+          <div
+            id="progressBar"
+            class="progress-bar"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+      <div class="progress-card">
+
+        <div class="progress-label">
+
+          <div>
+
+            <span>
+              Protein
+            </span>
+
+            <small id="proteinRemainingText">
+              —
+            </small>
+
+          </div>
+
+          <strong id="proteinProgressText">
+            0%
+          </strong>
+
+        </div>
+
+
+        <div class="progress-track">
+
+          <div
+            id="proteinProgressBar"
+            class="progress-bar"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+      <div class="micro-heading">
+
+        <p class="eyebrow">
+          MICRONUTRIENTS
+        </p>
+
+        <h3>
+          Daily coverage
+        </h3>
+
+      </div>
+
+
+      <div
+        id="micronutrients"
+        class="micronutrient-grid"
+      ></div>
+
+
+      <div
+        id="suggestionBox"
+        class="suggestion-box"
+      ></div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+
+<div
+  id="foodCalculatorOverlay"
+  class="food-calculator-overlay"
+>
+
+  <div class="food-calculator">
+
+    <div>
+
+      <div class="calculator-header">
+
+        <div>
+
+          <p class="eyebrow">
+            FOOD CALCULATOR
+          </p>
+
+          <h2 id="calculatorFoodName">
+            Food
+          </h2>
+
+        </div>
+
+
+        <button
+          id="calculatorClose"
+          class="calculator-close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="calculator-screen">
+
+        <div class="calculator-display-top">
+
+          <span id="calculatorFoodDescription">
+            Serving
+          </span>
+
+          <strong id="calculatorUnitLabel">
+            g
+          </strong>
+
+        </div>
+
+
+        <div class="calculator-number-display">
+
+          <span>
+            Quantity
+          </span>
+
+          <strong id="calculatorQuantity">
+            1
+          </strong>
+
+        </div>
+
+
+        <div class="live-macros">
+
+          <div class="live-macro">
+
+            <span>
+              CALORIES
+            </span>
+
+            <strong id="calculatorCalories">
+              0
+            </strong>
+
+          </div>
+
+
+          <div class="live-macro">
+
+            <span>
+              PROTEIN
+            </span>
+
+            <strong id="calculatorProtein">
+              0 g
+            </strong>
+
+          </div>
+
+
+          <div class="live-macro">
+
+            <span>
+              CARBS
+            </span>
+
+            <strong id="calculatorCarbs">
+              0 g
+            </strong>
+
+          </div>
+
+
+          <div class="live-macro">
+
+            <span>
+              FAT
+            </span>
+
+            <strong id="calculatorFat">
+              0 g
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="calculatorOptions"
+      ></div>
+
+    </div>
+
+
+
+    <div class="number-pad-panel">
+
+      <div class="number-pad-title">
+        QUANTITY
+      </div>
+
+
+      <div class="number-pad">
+
+        <button class="num-key" data-number="1">1</button>
+        <button class="num-key" data-number="2">2</button>
+        <button class="num-key" data-number="3">3</button>
+
+        <button class="num-key" data-number="4">4</button>
+        <button class="num-key" data-number="5">5</button>
+        <button class="num-key" data-number="6">6</button>
+
+        <button class="num-key" data-number="7">7</button>
+        <button class="num-key" data-number="8">8</button>
+        <button class="num-key" data-number="9">9</button>
+
+        <button
+          class="num-key action"
+          data-number="."
+        >
+          .
+        </button>
+
+        <button
+          class="num-key"
+          data-number="0"
+        >
+          0
+        </button>
+
+        <button
+          id="calculatorBackspace"
+          class="num-key action"
+        >
+          ⌫
+        </button>
+
+      </div>
+
+
+      <button
+        id="calculatorClear"
+        class="outline-button"
+        style="width:100%; margin-top:10px;"
+      >
+        Clear
+      </button>
+
+
+      <button
+        id="calculatorAdd"
+        class="add-calculated-food"
+      >
+        Add to Today
+      </button>
+
+
+      <p class="calculator-note">
+
+        Values are estimates and can vary with
+        size, preparation and product.
+
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script
+  type="module"
+  src="./diet.js"
+></script>
+
+</body>
+
+</html>

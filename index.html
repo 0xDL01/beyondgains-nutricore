@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>
+    BeyondGains NutriCore
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="./style.css"
+  />
+
+
+  <style>
+
+    /* ============================================
+       INDEX PAGE ADDITIONS
+    ============================================ */
+
+    .home-hero {
+
+      min-height: 520px;
+
+      display: grid;
+
+      grid-template-columns:
+        1.25fr 0.75fr;
+
+      gap: 35px;
+
+      align-items: center;
+
+      padding: 48px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 34px;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #ffffff,
+          #edf9f2 55%,
+          #e0f5e9
+        );
+
+      box-shadow:
+        var(--shadow);
+
+    }
+
+
+    .home-hero h1 {
+
+      max-width: 760px;
+
+      margin:
+        10px 0 17px;
+
+      font-size:
+        clamp(47px, 6vw, 80px);
+
+      line-height: 0.97;
+
+      letter-spacing: -0.06em;
+
+      color:
+        var(--green-950);
+
+    }
+
+
+    .home-hero h1 span {
+
+      color:
+        var(--green-500);
+
+    }
+
+
+    .home-hero p {
+
+      max-width: 650px;
+
+      color:
+        var(--text-soft);
+
+      font-size: 16px;
+
+      line-height: 1.7;
+
+    }
+
+
+    .hero-buttons {
+
+      display: flex;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+
+      margin-top: 24px;
+
+    }
+
+
+    .green-button {
+
+      min-height: 48px;
+
+      padding:
+        12px 18px;
+
+      border: 0;
+
+      border-radius: 13px;
+
+      color: white;
+
+      background:
+
+        linear-gradient(
+          145deg,
+          var(--green-700),
+          var(--green-500)
+        );
+
+      font-weight: 800;
+
+      box-shadow:
+
+        0 12px 25px
+        rgba(15, 140, 96, 0.18);
+
+      transition:
+        transform 0.12s ease,
+        box-shadow 0.16s ease;
+
+    }
+
+
+    .green-button:hover {
+
+      transform:
+        translateY(-3px);
+
+      box-shadow:
+
+        0 18px 34px
+        rgba(15, 140, 96, 0.22);
+
+    }
+
+
+    .green-button:active {
+
+      transform:
+        translateY(1px)
+        scale(0.96);
+
+    }
+
+
+    .outline-button {
+
+      min-height: 48px;
+
+      padding:
+        12px 18px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border:
+        1px solid var(--border-strong);
+
+      border-radius: 13px;
+
+      color:
+        var(--green-800);
+
+      background: white;
+
+      font-weight: 750;
+
+      transition: 0.15s ease;
+
+    }
+
+
+    .outline-button:hover {
+
+      background:
+        var(--green-100);
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .outline-button:active {
+
+      transform:
+        scale(0.96);
+
+    }
+
+
+    .hero-calorie-card {
+
+      padding: 26px;
+
+      border:
+        1px solid var(--green-200);
+
+      border-radius: 28px;
+
+      background: white;
+
+      box-shadow:
+        var(--shadow-sm);
+
+    }
+
+
+    .hero-calorie-number {
+
+      margin:
+        12px 0 22px;
+
+      font-size: 55px;
+
+      font-weight: 900;
+
+      color:
+        var(--green-800);
+
+      letter-spacing: -0.06em;
+
+    }
+
+
+    .hero-calorie-number small {
+
+      font-size: 14px;
+
+      color:
+        var(--muted);
+
+      letter-spacing: 0;
+
+    }
+
+
+    .mini-target-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 8px;
+
+    }
+
+
+    .mini-target {
+
+      padding: 13px;
+
+      border-radius: 13px;
+
+      background:
+        var(--surface-green);
+
+    }
+
+
+    .mini-target span {
+
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+    }
+
+
+    .mini-target strong {
+
+      display: block;
+
+      margin-top: 3px;
+
+      color:
+        var(--green-900);
+
+      font-size: 18px;
+
+    }
+
+
+    .calculator-section {
+
+      margin-top: 18px;
+
+      padding: 30px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 28px;
+
+      background: white;
+
+      box-shadow:
+        var(--shadow-sm);
+
+    }
+
+
+    .goal-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+
+    }
+
+
+    .goal-card {
+
+      position: relative;
+
+      min-height: 150px;
+
+      padding: 17px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 17px;
+
+      background:
+        var(--surface-soft);
+
+      cursor: pointer;
+
+      transition:
+        transform 0.16s ease,
+        border-color 0.16s ease,
+        background 0.16s ease,
+        box-shadow 0.16s ease;
+
+    }
+
+
+    .goal-card:hover {
+
+      transform:
+        translateY(-4px);
+
+      border-color:
+        var(--green-300);
+
+      background:
+        var(--surface-green);
+
+      box-shadow:
+        var(--shadow-sm);
+
+    }
+
+
+    .goal-card:active {
+
+      transform:
+        scale(0.97);
+
+    }
+
+
+    .goal-card input {
+
+      position: absolute;
+
+      opacity: 0;
+
+    }
+
+
+    .goal-card:has(input:checked) {
+
+      border-color:
+        var(--green-500);
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #ffffff,
+          var(--surface-green)
+        );
+
+      box-shadow:
+
+        0 0 0 2px
+        rgba(21, 166, 111, 0.08);
+
+    }
+
+
+    .goal-symbol {
+
+      width: 38px;
+
+      height: 38px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      margin-bottom: 20px;
+
+      border-radius: 11px;
+
+      background:
+        var(--green-100);
+
+      color:
+        var(--green-700);
+
+      font-weight: 900;
+
+    }
+
+
+    .goal-card strong {
+
+      display: block;
+
+      color:
+        var(--green-950);
+
+    }
+
+
+    .goal-card span {
+
+      display: block;
+
+      margin-top: 6px;
+
+      color:
+        var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1.5;
+
+    }
+
+
+    .form-grid-home {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+
+    }
+
+
+    .home-field {
+
+      display: block;
+
+      font-size: 11px;
+
+      font-weight: 750;
+
+      color:
+        var(--green-900);
+
+    }
+
+
+    .home-field span {
+
+      display: block;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .diet-grid-home {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+
+    }
+
+
+    .diet-card-home {
+
+      position: relative;
+
+      padding: 16px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 15px;
+
+      background:
+        var(--surface-soft);
+
+      cursor: pointer;
+
+      transition: 0.15s ease;
+
+    }
+
+
+    .diet-card-home:hover {
+
+      transform:
+        translateY(-3px);
+
+      background:
+        var(--surface-green);
+
+    }
+
+
+    .diet-card-home input {
+
+      position: absolute;
+
+      opacity: 0;
+
+    }
+
+
+    .diet-card-home:has(input:checked) {
+
+      border-color:
+        var(--green-500);
+
+      background:
+        var(--green-100);
+
+    }
+
+
+    .diet-card-home strong {
+
+      color:
+        var(--green-900);
+
+    }
+
+
+    .diet-card-home small {
+
+      display: block;
+
+      margin-top: 5px;
+
+      color:
+        var(--muted);
+
+    }
+
+
+    .results-home {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+
+      margin-top: 20px;
+
+    }
+
+
+    .result-home-card {
+
+      padding: 17px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 15px;
+
+      background:
+        var(--surface-soft);
+
+    }
+
+
+    .result-home-card.highlight {
+
+      border-color:
+        var(--green-300);
+
+      background:
+        var(--surface-green);
+
+    }
+
+
+    .result-home-card span {
+
+      display: block;
+
+      color:
+        var(--muted);
+
+      font-size: 10px;
+
+    }
+
+
+    .result-home-card strong {
+
+      display: block;
+
+      margin-top: 5px;
+
+      color:
+        var(--green-900);
+
+      font-size: 27px;
+
+    }
+
+
+    .hidden {
+
+      display: none;
+
+    }
+
+
+    @media (max-width: 950px) {
+
+      .home-hero {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .goal-grid,
+      .diet-grid-home {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+
+      .form-grid-home {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .home-hero {
+
+        padding: 25px;
+
+      }
+
+
+      .home-hero h1 {
+
+        font-size: 47px;
+
+      }
+
+
+      .goal-grid,
+      .diet-grid-home,
+      .form-grid-home {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .results-home {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- NAV -->
+
+  <header class="navbar">
+
+    <a
+      href="./index.html"
+      class="logo"
+    >
+
+      <span class="logo-mark">
+        BG
+      </span>
+
+
+      <span class="logo-copy">
+
+        <span class="logo-top">
+          BEYONDGAINS
+        </span>
+
+        <span class="logo-main">
+          NutriCore
+        </span>
+
+      </span>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a
+        href="./index.html"
+        class="nav-link active"
+      >
+        Calculator
+      </a>
+
+      <a
+        href="./diet.html"
+        class="nav-link"
+      >
+        Diet Builder
+      </a>
+
+    </nav>
+
+  </header>
+
+
+
+  <main class="page">
+
+    <!-- HERO -->
+
+    <section class="home-hero">
+
+      <div>
+
+        <p class="eyebrow">
+          SMART NUTRITION FOR REAL FOOD
+        </p>
+
+        <h1>
+          Your body.
+          Your food.
+          <span>Your numbers.</span>
+        </h1>
+
+        <p>
+          Calculate your energy and protein needs,
+          then build the actual foods you eat —
+          from chicken and eggs to roti, dosa,
+          fruit, coffee, tea and Indian meals.
+        </p>
+
+
+        <div class="hero-buttons">
+
+          <button
+            id="startCalculator"
+            class="green-button"
+          >
+            Calculate My Targets
+          </button>
+
+
+          <a
+            href="./diet.html"
+            class="outline-button"
+          >
+            Open Diet Builder
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-calorie-card">
+
+        <p class="eyebrow">
+          YOUR CURRENT PLAN
+        </p>
+
+        <div class="hero-calorie-number">
+
+          <span id="heroCalories">
+            —
+          </span>
+
+          <small>
+            kcal
+          </small>
+
+        </div>
+
+
+        <div class="mini-target-grid">
+
+          <div class="mini-target">
+
+            <span>
+              TDEE
+            </span>
+
+            <strong id="heroTDEE">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="mini-target">
+
+            <span>
+              Protein
+            </span>
+
+            <strong id="heroProtein">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="mini-target">
+
+            <span>
+              Carbs
+            </span>
+
+            <strong id="heroCarbs">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="mini-target">
+
+            <span>
+              Fat
+            </span>
+
+            <strong id="heroFat">
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- GOAL -->
+
+    <section
+      id="calculator"
+      class="calculator-section"
+    >
+
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            STEP 01
+          </p>
+
+          <h2>
+            Choose your goal
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="goal-grid">
+
+        <label class="goal-card">
+
+          <input
+            type="radio"
+            name="goal"
+            value="lose"
+            checked
+          />
+
+          <div class="goal-symbol">
+            ↓
+          </div>
+
+          <strong>
+            Lose Fat
+          </strong>
+
+          <span>
+            Calorie deficit with higher protein.
+          </span>
+
+        </label>
+
+
+        <label class="goal-card">
+
+          <input
+            type="radio"
+            name="goal"
+            value="maintain"
+          />
+
+          <div class="goal-symbol">
+            =
+          </div>
+
+          <strong>
+            Maintain
+          </strong>
+
+          <span>
+            Stay close to energy balance.
+          </span>
+
+        </label>
+
+
+        <label class="goal-card">
+
+          <input
+            type="radio"
+            name="goal"
+            value="gain"
+          />
+
+          <div class="goal-symbol">
+            ↑
+          </div>
+
+          <strong>
+            Gain Weight
+          </strong>
+
+          <span>
+            Controlled calorie surplus.
+          </span>
+
+        </label>
+
+
+        <label class="goal-card">
+
+          <input
+            type="radio"
+            name="goal"
+            value="muscle"
+          />
+
+          <div class="goal-symbol">
+            +
+          </div>
+
+          <strong>
+            Build Muscle
+          </strong>
+
+          <span>
+            Higher protein and modest surplus.
+          </span>
+
+        </label>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- BODY -->
+
+    <section class="calculator-section">
+
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            STEP 02
+          </p>
+
+          <h2>
+            Tell us about your body
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-grid-home">
+
+        <label class="home-field">
+
+          <span>
+            Age
+          </span>
+
+          <input
+            id="age"
+            type="number"
+            value="30"
+          />
+
+        </label>
+
+
+        <label class="home-field">
+
+          <span>
+            Sex used by equation
+          </span>
+
+          <select id="sex">
+
+            <option value="male">
+              Male
+            </option>
+
+            <option value="female">
+              Female
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <label class="home-field">
+
+          <span>
+            Height (cm)
+          </span>
+
+          <input
+            id="height"
+            type="number"
+            value="175"
+          />
+
+        </label>
+
+
+        <label class="home-field">
+
+          <span>
+            Current weight (kg)
+          </span>
+
+          <input
+            id="weight"
+            type="number"
+            step="0.1"
+            value="80"
+          />
+
+        </label>
+
+
+        <label class="home-field">
+
+          <span>
+            Target weight (kg)
+          </span>
+
+          <input
+            id="targetWeight"
+            type="number"
+            step="0.1"
+            value="72"
+          />
+
+        </label>
+
+
+        <label class="home-field">
+
+          <span>
+            Activity level
+          </span>
+
+          <select id="activity">
+
+            <option value="1.2">
+              Sedentary
+            </option>
+
+            <option value="1.375">
+              Light Activity
+            </option>
+
+            <option
+              value="1.55"
+              selected
+            >
+              Moderate Activity
+            </option>
+
+            <option value="1.725">
+              Very Active
+            </option>
+
+            <option value="1.9">
+              Athlete / Physical Work
+            </option>
+
+          </select>
+
+        </label>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- DIET TYPE -->
+
+    <section class="calculator-section">
+
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            STEP 03
+          </p>
+
+          <h2>
+            Diet preference
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="diet-grid-home">
+
+        <label class="diet-card-home">
+
+          <input
+            type="radio"
+            name="diet"
+            value="vegetarian"
+          />
+
+          <strong>
+            Vegetarian
+          </strong>
+
+          <small>
+            Plant foods + dairy
+          </small>
+
+        </label>
+
+
+        <label class="diet-card-home">
+
+          <input
+            type="radio"
+            name="diet"
+            value="eggitarian"
+          />
+
+          <strong>
+            Veg + Eggs
+          </strong>
+
+          <small>
+            Vegetarian + eggs
+          </small>
+
+        </label>
+
+
+        <label class="diet-card-home">
+
+          <input
+            type="radio"
+            name="diet"
+            value="nonveg"
+            checked
+          />
+
+          <strong>
+            Non-Vegetarian
+          </strong>
+
+          <small>
+            All major food groups
+          </small>
+
+        </label>
+
+
+        <label class="diet-card-home">
+
+          <input
+            type="radio"
+            name="diet"
+            value="vegan"
+          />
+
+          <strong>
+            Vegan
+          </strong>
+
+          <small>
+            Plant foods only
+          </small>
+
+        </label>
+
+      </div>
+
+
+      <button
+        id="calculateButton"
+        class="green-button"
+        style="margin-top:22px;"
+      >
+        Calculate My Nutrition
+      </button>
+
+
+      <div
+        id="results"
+        class="results-home hidden"
+      >
+
+        <div class="result-home-card">
+
+          <span>
+            BMI
+          </span>
+
+          <strong id="resultBMI">
+            —
+          </strong>
+
+        </div>
+
+
+        <div class="result-home-card">
+
+          <span>
+            TDEE
+          </span>
+
+          <strong id="resultTDEE">
+            —
+          </strong>
+
+        </div>
+
+
+        <div class="result-home-card highlight">
+
+          <span>
+            Goal Calories
+          </span>
+
+          <strong id="resultCalories">
+            —
+          </strong>
+
+        </div>
+
+
+        <div class="result-home-card highlight">
+
+          <span>
+            Protein
+          </span>
+
+          <strong id="resultProtein">
+            —
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <a
+        id="buildDietButton"
+        href="./diet.html"
+        class="green-button hidden"
+        style="margin-top:14px;"
+      >
+        Build My Diet →
+      </a>
+
+    </section>
+
+  </main>
+
+
+
+  <script>
+
+    const $ =
+      id =>
+        document.getElementById(id);
+
+
+    function selected(name) {
+
+      return document.querySelector(
+        `input[name="${name}"]:checked`
+      )?.value;
+
+    }
+
+
+    function calculateBMI(
+      weight,
+      height
+    ) {
+
+      const metres =
+        height / 100;
+
+      return weight /
+        (metres * metres);
+
+    }
+
+
+    function calculateBMR(
+      weight,
+      height,
+      age,
+      sex
+    ) {
+
+      return (
+
+        10 * weight +
+
+        6.25 * height -
+
+        5 * age +
+
+        (
+          sex === "male"
+            ? 5
+            : -161
+        )
+
+      );
+
+    }
+
+
+    function proteinTarget(
+      weight,
+      targetWeight,
+      goal
+    ) {
+
+      let referenceWeight =
+        weight;
+
+
+      if (
+        goal === "lose" &&
+        targetWeight <
+        weight
+      ) {
+
+        referenceWeight =
+          targetWeight;
+
+      }
+
+
+      let multiplier = 1.4;
+
+
+      if (goal === "lose") {
+        multiplier = 1.6;
+      }
+
+
+      if (goal === "gain") {
+        multiplier = 1.6;
+      }
+
+
+      if (goal === "muscle") {
+        multiplier = 1.8;
+      }
+
+
+      return (
+        referenceWeight *
+        multiplier
+      );
+
+    }
+
+
+    function calculatePlan() {
+
+      const age =
+        Number(
+          $("age").value
+        );
+
+
+      const sex =
+        $("sex").value;
+
+
+      const height =
+        Number(
+          $("height").value
+        );
+
+
+      const weight =
+        Number(
+          $("weight").value
+        );
+
+
+      const targetWeight =
+        Number(
+          $("targetWeight").value
+        );
+
+
+      const activity =
+        Number(
+          $("activity").value
+        );
+
+
+      const goal =
+        selected("goal");
+
+
+      const diet =
+        selected("diet");
+
+
+      const bmi =
+        calculateBMI(
+          weight,
+          height
+        );
+
+
+      const bmr =
+        calculateBMR(
+          weight,
+          height,
+          age,
+          sex
+        );
+
+
+      const tdee =
+        bmr * activity;
+
+
+      let calories =
+        tdee;
+
+
+      if (
+        goal === "lose"
+      ) {
+
+        calories -= 500;
+
+      }
+
+
+      if (
+        goal === "gain"
+      ) {
+
+        calories += 300;
+
+      }
+
+
+      if (
+        goal === "muscle"
+      ) {
+
+        calories += 250;
+
+      }
+
+
+      calories =
+        Math.max(
+          calories,
+          1200
+        );
+
+
+      const protein =
+        proteinTarget(
+
+          weight,
+
+          targetWeight,
+
+          goal
+
+        );
+
+
+      const fat =
+        Math.max(
+
+          weight * 0.7,
+
+          calories *
+          0.25 /
+          9
+
+        );
+
+
+      const carbs =
+
+        Math.max(
+
+          0,
+
+          calories -
+
+          protein * 4 -
+
+          fat * 9
+
+        ) / 4;
+
+
+      const fibre =
+        calories *
+        14 /
+        1000;
+
+
+      const plan = {
+
+        age,
+
+        sex,
+
+        height,
+
+        weight,
+
+        targetWeight,
+
+        goal,
+
+        diet,
+
+        activity,
+
+        bmi:
+          Number(
+            bmi.toFixed(1)
+          ),
+
+        tdee:
+          Math.round(tdee),
+
+        calories:
+          Math.round(calories),
+
+        protein:
+          Math.round(protein),
+
+        fat:
+          Math.round(fat),
+
+        carbs:
+          Math.round(carbs),
+
+        fibre:
+          Math.round(fibre)
+
+      };
+
+
+      localStorage.setItem(
+
+        "nutricorePlan",
+
+        JSON.stringify(plan)
+
+      );
+
+
+      $("resultBMI")
+        .textContent =
+          plan.bmi;
+
+
+      $("resultTDEE")
+        .textContent =
+          `${plan.tdee}`;
+
+
+      $("resultCalories")
+        .textContent =
+          `${plan.calories}`;
+
+
+      $("resultProtein")
+        .textContent =
+          `${plan.protein} g`;
+
+
+      $("heroCalories")
+        .textContent =
+          plan.calories;
+
+
+      $("heroTDEE")
+        .textContent =
+          plan.tdee;
+
+
+      $("heroProtein")
+        .textContent =
+          `${plan.protein} g`;
+
+
+      $("heroCarbs")
+        .textContent =
+          `${plan.carbs} g`;
+
+
+      $("heroFat")
+        .textContent =
+          `${plan.fat} g`;
+
+
+      $("results")
+        .classList
+        .remove("hidden");
+
+
+      $("buildDietButton")
+        .classList
+        .remove("hidden");
+
+
+      $("results")
+        .scrollIntoView({
+
+          behavior:
+            "smooth",
+
+          block:
+            "center"
+
+        });
+
+    }
+
+
+    $("calculateButton")
+      .addEventListener(
+
+        "click",
+
+        calculatePlan
+
+      );
+
+
+    $("startCalculator")
+      .addEventListener(
+
+        "click",
+
+        () => {
+
+          $("calculator")
+            .scrollIntoView({
+
+              behavior:
+                "smooth"
+
+            });
+
+        }
+
+      );
+
+
+    const savedPlan =
+      localStorage.getItem(
+        "nutricorePlan"
+      );
+
+
+    if (savedPlan) {
+
+      const plan =
+        JSON.parse(
+          savedPlan
+        );
+
+
+      $("heroCalories")
+        .textContent =
+          plan.calories;
+
+
+      $("heroTDEE")
+        .textContent =
+          plan.tdee;
+
+
+      $("heroProtein")
+        .textContent =
+          `${plan.protein} g`;
+
+
+      $("heroCarbs")
+        .textContent =
+          `${plan.carbs} g`;
+
+
+      $("heroFat")
+        .textContent =
+          `${plan.fat} g`;
+
+    }
+
+  </script>
+
+</body>
+
+</html>
