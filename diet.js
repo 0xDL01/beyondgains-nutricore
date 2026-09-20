@@ -1,6 +1,16 @@
+import {
+
+  foods,
+
+  ALL_DIETS
+
+} from "./foods.js";
+
+
 const $ =
   id =>
     document.getElementById(id);
+
 
 
 /* ======================================================
@@ -9,9 +19,11 @@ const $ =
 
 const plan =
   JSON.parse(
+
     localStorage.getItem(
       "nutricorePlan"
     ) || "{}"
+
   );
 
 
@@ -38,793 +50,60 @@ const targets = {
 $("targetCalories").textContent =
   targets.calories;
 
+
 $("targetProtein").textContent =
   `${targets.protein} g`;
+
 
 $("targetCarbs").textContent =
   `${targets.carbs} g`;
 
+
 $("targetFat").textContent =
   `${targets.fat} g`;
+
 
 $("targetFibre").textContent =
   `${targets.fibre} g`;
 
 
 
-const allDiets = [
-  "vegetarian",
-  "vegan",
-  "eggitarian",
-  "nonveg"
-];
+const dietNames = {
+
+  vegetarian:
+    "Vegetarian",
+
+  eggitarian:
+    "Vegetarian + Eggs",
+
+  nonveg:
+    "Non-Vegetarian",
+
+  vegan:
+    "Vegan"
+
+};
 
 
-const vegetarianDiets = [
-  "vegetarian",
-  "eggitarian",
-  "nonveg"
-];
+$("dietTypeDisplay").textContent =
 
+  plan.diet
 
+    ? `${dietNames[plan.diet] || plan.diet} mode — search the complete library and build the exact serving you eat.`
 
-/* ======================================================
-   GENERIC FOOD MAKER
-====================================================== */
-
-function makeFood(
-  id,
-  name,
-  category,
-  kcal,
-  protein,
-  carbs,
-  fat,
-  fibre,
-  extra = {}
-) {
-
-  return {
-
-    id,
-
-    name,
-
-    category,
-
-    description:
-      extra.description ||
-      "Per 100 g",
-
-    diet:
-      extra.diet ||
-      allDiets,
-
-    unit:
-      extra.unit ||
-      "g",
-
-    pieceWeightG:
-      extra.pieceWeightG ||
-      null,
-
-    nutritionPer100: {
-
-      calories:
-        kcal,
-
-      proteinG:
-        protein,
-
-      carbsG:
-        carbs,
-
-      fatG:
-        fat,
-
-      fibreG:
-        fibre,
-
-      calciumMg:
-        extra.calciumMg || 0,
-
-      ironMg:
-        extra.ironMg || 0,
-
-      magnesiumMg:
-        extra.magnesiumMg || 0,
-
-      potassiumMg:
-        extra.potassiumMg || 0,
-
-      vitaminCmg:
-        extra.vitaminCmg || 0,
-
-      folateUg:
-        extra.folateUg || 0
-
-    }
-
-  };
-
-}
+    : "Search the complete library and build the exact serving you eat.";
 
 
 
 /* ======================================================
-   FRUITS
-====================================================== */
-
-const fruits = [
-
-  makeFood(
-    "banana",
-    "Banana",
-    "Fruits",
-    89,1.1,22.8,0.3,2.6,
-    {
-      unit:"piece",
-      pieceWeightG:118,
-      potassiumMg:358
-    }
-  ),
-
-  makeFood(
-    "apple",
-    "Apple",
-    "Fruits",
-    52,0.3,13.8,0.2,2.4,
-    {
-      unit:"piece",
-      pieceWeightG:182
-    }
-  ),
-
-  makeFood(
-    "mango",
-    "Mango",
-    "Fruits",
-    60,0.8,15,0.4,1.6,
-    {
-      unit:"piece",
-      pieceWeightG:200
-    }
-  ),
-
-  makeFood(
-    "orange",
-    "Orange",
-    "Fruits",
-    47,0.9,11.8,0.1,2.4,
-    {
-      unit:"piece",
-      pieceWeightG:130
-    }
-  ),
-
-  makeFood(
-    "mosambi",
-    "Mosambi / Sweet Lime",
-    "Fruits",
-    43,0.8,10,0.2,2,
-    {
-      unit:"piece",
-      pieceWeightG:150
-    }
-  ),
-
-  makeFood(
-    "guava",
-    "Guava",
-    "Fruits",
-    68,2.6,14.3,1,5.4,
-    {
-      unit:"piece",
-      pieceWeightG:100
-    }
-  ),
-
-  makeFood(
-    "papaya",
-    "Papaya",
-    "Fruits",
-    43,0.5,10.8,0.3,1.7
-  ),
-
-  makeFood(
-    "watermelon",
-    "Watermelon",
-    "Fruits",
-    30,0.6,7.6,0.2,0.4
-  ),
-
-  makeFood(
-    "muskmelon",
-    "Muskmelon",
-    "Fruits",
-    34,0.8,8.2,0.2,0.9
-  ),
-
-  makeFood(
-    "pomegranate",
-    "Pomegranate",
-    "Fruits",
-    83,1.7,18.7,1.2,4,
-    {
-      unit:"piece",
-      pieceWeightG:170
-    }
-  ),
-
-  makeFood(
-    "pineapple",
-    "Pineapple",
-    "Fruits",
-    50,0.5,13.1,0.1,1.4
-  ),
-
-  makeFood(
-    "green-grapes",
-    "Green Grapes",
-    "Fruits",
-    69,0.7,18.1,0.2,0.9
-  ),
-
-  makeFood(
-    "black-grapes",
-    "Black Grapes",
-    "Fruits",
-    69,0.7,18,0.2,0.9
-  ),
-
-  makeFood(
-    "chikoo",
-    "Chikoo / Sapota",
-    "Fruits",
-    83,0.4,20,1.1,5.3,
-    {
-      unit:"piece",
-      pieceWeightG:100
-    }
-  ),
-
-  makeFood(
-    "sitaphal",
-    "Custard Apple / Sitaphal",
-    "Fruits",
-    94,2.1,23.6,0.3,4.4,
-    {
-      unit:"piece",
-      pieceWeightG:160
-    }
-  ),
-
-  makeFood(
-    "pear",
-    "Pear",
-    "Fruits",
-    57,0.4,15.2,0.1,3.1,
-    {
-      unit:"piece",
-      pieceWeightG:178
-    }
-  ),
-
-  makeFood(
-    "kiwi",
-    "Kiwi",
-    "Fruits",
-    61,1.1,14.7,0.5,3,
-    {
-      unit:"piece",
-      pieceWeightG:75
-    }
-  ),
-
-  makeFood(
-    "strawberry",
-    "Strawberry",
-    "Fruits",
-    32,0.7,7.7,0.3,2
-  ),
-
-  makeFood(
-    "blueberry",
-    "Blueberry",
-    "Fruits",
-    57,0.7,14.5,0.3,2.4
-  ),
-
-  makeFood(
-    "dragon-fruit",
-    "Dragon Fruit",
-    "Fruits",
-    57,0.4,13,0.1,3,
-    {
-      unit:"piece",
-      pieceWeightG:250
-    }
-  ),
-
-  makeFood(
-    "peach",
-    "Peach",
-    "Fruits",
-    39,0.9,9.5,0.3,1.5,
-    {
-      unit:"piece",
-      pieceWeightG:150
-    }
-  ),
-
-  makeFood(
-    "plum",
-    "Plum",
-    "Fruits",
-    46,0.7,11.4,0.3,1.4,
-    {
-      unit:"piece",
-      pieceWeightG:66
-    }
-  ),
-
-  makeFood(
-    "litchi",
-    "Litchi",
-    "Fruits",
-    66,0.8,16.5,0.4,1.3
-  ),
-
-  makeFood(
-    "jackfruit",
-    "Jackfruit",
-    "Fruits",
-    95,1.7,23.2,0.6,1.5
-  ),
-
-  makeFood(
-    "amla",
-    "Amla",
-    "Fruits",
-    44,0.9,10.2,0.6,4.3
-  ),
-
-  makeFood(
-    "jamun",
-    "Jamun",
-    "Fruits",
-    60,0.7,15.6,0.2,0.6
-  ),
-
-  makeFood(
-    "avocado",
-    "Avocado",
-    "Fruits",
-    160,2,8.5,14.7,6.7,
-    {
-      unit:"piece",
-      pieceWeightG:150
-    }
-  ),
-
-  makeFood(
-    "fresh-fig",
-    "Fresh Fig",
-    "Fruits",
-    74,0.8,19.2,0.3,2.9,
-    {
-      unit:"piece",
-      pieceWeightG:50
-    }
-  )
-
-];
-
-
-
-/* ======================================================
-   VEGETABLES
-====================================================== */
-
-const vegetables = [
-
-  makeFood(
-    "spinach",
-    "Spinach / Palak",
-    "Vegetables",
-    23,2.9,3.6,0.4,2.2
-  ),
-
-  makeFood(
-    "methi",
-    "Methi Leaves",
-    "Vegetables",
-    49,4.4,6,0.9,1.1
-  ),
-
-  makeFood(
-    "amaranth",
-    "Amaranth / Chaulai",
-    "Vegetables",
-    23,2.5,4,0.3,2.2
-  ),
-
-  makeFood(
-    "cabbage",
-    "Cabbage",
-    "Vegetables",
-    25,1.3,5.8,0.1,2.5
-  ),
-
-  makeFood(
-    "cauliflower",
-    "Cauliflower",
-    "Vegetables",
-    25,1.9,5,0.3,2
-  ),
-
-  makeFood(
-    "broccoli",
-    "Broccoli",
-    "Vegetables",
-    34,2.8,6.6,0.4,2.6
-  ),
-
-  makeFood(
-    "carrot",
-    "Carrot",
-    "Vegetables",
-    41,0.9,9.6,0.2,2.8
-  ),
-
-  makeFood(
-    "beetroot",
-    "Beetroot",
-    "Vegetables",
-    43,1.6,9.6,0.2,2.8
-  ),
-
-  makeFood(
-    "radish",
-    "Radish / Mooli",
-    "Vegetables",
-    16,0.7,3.4,0.1,1.6
-  ),
-
-  makeFood(
-    "onion",
-    "Onion",
-    "Vegetables",
-    40,1.1,9.3,0.1,1.7
-  ),
-
-  makeFood(
-    "tomato",
-    "Tomato",
-    "Vegetables",
-    18,0.9,3.9,0.2,1.2
-  ),
-
-  makeFood(
-    "potato",
-    "Potato",
-    "Vegetables",
-    77,2,17.5,0.1,2.2
-  ),
-
-  makeFood(
-    "sweet-potato",
-    "Sweet Potato",
-    "Vegetables",
-    86,1.6,20.1,0.1,3
-  ),
-
-  makeFood(
-    "okra",
-    "Bhindi / Okra",
-    "Vegetables",
-    33,1.9,7.5,0.2,3.2
-  ),
-
-  makeFood(
-    "brinjal",
-    "Brinjal",
-    "Vegetables",
-    25,1,6,0.2,3
-  ),
-
-  makeFood(
-    "lauki",
-    "Bottle Gourd / Lauki",
-    "Vegetables",
-    15,0.6,3.7,0,1.2
-  ),
-
-  makeFood(
-    "turai",
-    "Ridge Gourd / Turai",
-    "Vegetables",
-    20,1.2,4.4,0.2,1.1
-  ),
-
-  makeFood(
-    "karela",
-    "Bitter Gourd / Karela",
-    "Vegetables",
-    17,1,3.7,0.2,2.8
-  ),
-
-  makeFood(
-    "pumpkin",
-    "Pumpkin",
-    "Vegetables",
-    26,1,6.5,0.1,0.5
-  ),
-
-  makeFood(
-    "cucumber",
-    "Cucumber",
-    "Vegetables",
-    15,0.7,3.6,0.1,0.5
-  ),
-
-  makeFood(
-    "green-capsicum",
-    "Green Capsicum",
-    "Vegetables",
-    20,0.9,4.6,0.2,1.7
-  ),
-
-  makeFood(
-    "red-capsicum",
-    "Red Capsicum",
-    "Vegetables",
-    31,1,6,0.3,2.1
-  ),
-
-  makeFood(
-    "green-peas",
-    "Fresh Green Peas",
-    "Vegetables",
-    81,5.4,14.5,0.4,5.7
-  ),
-
-  makeFood(
-    "french-beans",
-    "French Beans",
-    "Vegetables",
-    31,1.8,7,0.2,2.7
-  ),
-
-  makeFood(
-    "cluster-beans",
-    "Cluster Beans / Guar",
-    "Vegetables",
-    35,3.2,7,0.4,3.7
-  ),
-
-  makeFood(
-    "mushroom",
-    "Button Mushroom",
-    "Vegetables",
-    22,3.1,3.3,0.3,1
-  ),
-
-  makeFood(
-    "sweet-corn",
-    "Sweet Corn",
-    "Vegetables",
-    86,3.3,19,1.4,2.7
-  ),
-
-  makeFood(
-    "baby-corn",
-    "Baby Corn",
-    "Vegetables",
-    26,2.5,5.9,0.4,2
-  )
-
-];
-
-
-
-/* ======================================================
-   DALS / LENTILS / PULSES
-
-   These are COOKED values unless stated.
-====================================================== */
-
-const pulses = [
-
-  makeFood(
-    "toor-dal",
-    "Toor Dal - Cooked",
-    "Dal & Pulses",
-    116,7,20,1,7,
-    {
-      description:
-        "Cooked pigeon pea dal"
-    }
-  ),
-
-  makeFood(
-    "moong-dal",
-    "Yellow Moong Dal - Cooked",
-    "Dal & Pulses",
-    105,7,19,0.4,7.6
-  ),
-
-  makeFood(
-    "green-moong",
-    "Whole Green Moong - Cooked",
-    "Dal & Pulses",
-    105,7,19,0.4,7.6
-  ),
-
-  makeFood(
-    "masoor-dal",
-    "Masoor Dal - Cooked",
-    "Dal & Pulses",
-    116,9,20,0.4,8
-  ),
-
-  makeFood(
-    "urad-dal",
-    "Urad Dal - Cooked",
-    "Dal & Pulses",
-    116,8,20,0.5,7
-  ),
-
-  makeFood(
-    "chana-dal",
-    "Chana Dal - Cooked",
-    "Dal & Pulses",
-    164,9,27,2.6,7.6
-  ),
-
-  makeFood(
-    "rajma",
-    "Rajma - Cooked",
-    "Dal & Pulses",
-    127,8.7,22.8,0.5,6.4
-  ),
-
-  makeFood(
-    "white-chickpeas",
-    "White Chickpeas / Kabuli Chana",
-    "Dal & Pulses",
-    164,8.9,27.4,2.6,7.6
-  ),
-
-  makeFood(
-    "black-chana",
-    "Kala Chana - Cooked",
-    "Dal & Pulses",
-    164,8.9,27,2.6,7.6
-  ),
-
-  makeFood(
-    "lobia",
-    "Lobia / Black-Eyed Peas - Cooked",
-    "Dal & Pulses",
-    116,7.7,20.8,0.5,6.5
-  ),
-
-  makeFood(
-    "dried-green-peas",
-    "Dried Green Peas - Cooked",
-    "Dal & Pulses",
-    118,8.3,21,0.4,8
-  ),
-
-  makeFood(
-    "dried-yellow-peas",
-    "Yellow Peas - Cooked",
-    "Dal & Pulses",
-    118,8,21,0.4,8
-  ),
-
-  makeFood(
-    "moth-beans",
-    "Moth Beans / Matki - Cooked",
-    "Dal & Pulses",
-    117,8,20,0.5,7
-  ),
-
-  makeFood(
-    "horse-gram",
-    "Horse Gram / Kulith - Cooked",
-    "Dal & Pulses",
-    120,8,21,0.5,5
-  ),
-
-  makeFood(
-    "soybean-cooked",
-    "Soybeans - Cooked",
-    "Dal & Pulses",
-    173,16.6,9.9,9,6
-  ),
-
-  makeFood(
-    "soy-chunks-dry",
-    "Soy Chunks - Dry",
-    "Dal & Pulses",
-    345,52,33,0.5,13,
-    {
-      description:
-        "Dry weight before soaking"
-    }
-  )
-
-];
-
-
-
-/* ======================================================
-   SPROUTS
-====================================================== */
-
-const sprouts = [
-
-  makeFood(
-    "moong-sprouts",
-    "Moong Sprouts",
-    "Sprouts",
-    30,3,5.9,0.2,1.8,
-    {
-      description:
-        "Raw sprouted mung beans"
-    }
-  ),
-
-  makeFood(
-    "matki-sprouts",
-    "Matki / Moth Bean Sprouts",
-    "Sprouts",
-    35,3.5,6,0.4,2
-  ),
-
-  makeFood(
-    "chana-sprouts",
-    "Chana Sprouts",
-    "Sprouts",
-    120,7,20,2,6
-  ),
-
-  makeFood(
-    "mixed-sprouts",
-    "Mixed Sprouts",
-    "Sprouts",
-    80,6,13,1,4
-  ),
-
-  makeFood(
-    "alfalfa-sprouts",
-    "Alfalfa Sprouts",
-    "Sprouts",
-    23,4,2.1,0.7,1.9
-  ),
-
-  makeFood(
-    "soybean-sprouts",
-    "Soybean Sprouts",
-    "Sprouts",
-    122,13,9.6,6.7,1.1
-  )
-
-];
-
-
-
-/* ======================================================
-   BUILDERS
+   BUILDERS + MEALS
 ====================================================== */
 
 const builders = [
 
   {
     id:
-      "roti-builder",
+      "builder-roti",
 
     name:
       "Roti",
@@ -832,41 +111,42 @@ const builders = [
     category:
       "Roti & Breads",
 
+    brand:
+      null,
+
+    type:
+      "builder",
+
     description:
-      "Choose size and added fat",
+      "Choose size and exact ghee/oil amount",
 
     diet:
-      allDiets,
-
-    builderType:
-      "roti",
+      ALL_DIETS,
 
     unit:
       "piece",
 
-    base: {
-      calories:105,
-      proteinG:3.5,
-      carbsG:21,
-      fatG:0.8,
-      fibreG:3
-    },
+    builderType:
+      "roti",
+
+    nutritionStatus:
+      "builder",
 
     options: {
 
-      size:[
+      size: [
         "Small",
         "Medium",
         "Large"
       ],
 
-      fatType:[
+      fatType: [
         "None",
         "Ghee",
         "Oil"
       ],
 
-      fatAmount:[
+      fatAmount: [
         0,
         2.5,
         5,
@@ -876,36 +156,47 @@ const builders = [
       ]
 
     }
+
   },
 
 
   {
     id:
-      "coffee-builder",
+      "builder-coffee",
 
     name:
-      "Coffee",
+      "Coffee Builder",
 
     category:
       "Coffee & Tea",
 
+    brand:
+      null,
+
+    type:
+      "builder",
+
     description:
-      "Espresso, Americano, latte and more",
+      "Americano, espresso, latte, cappuccino, flat white, mocha and more",
 
     diet:
-      allDiets,
-
-    builderType:
-      "coffee",
+      ALL_DIETS,
 
     unit:
       "cup",
 
+    builderType:
+      "coffee",
+
+    nutritionStatus:
+      "builder",
+
     options: {
 
-      coffeeType:[
-        "Espresso",
+      coffeeType: [
         "Americano",
+        "Espresso",
+        "Doppio",
         "Latte",
         "Cappuccino",
         "Flat White",
@@ -914,7 +205,13 @@ const builders = [
         "Mocha"
       ],
 
-      milk:[
+      size: [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+
+      milk: [
         "None",
         "Whole Milk",
         "Low Fat Milk",
@@ -922,59 +219,66 @@ const builders = [
         "Oat Milk"
       ],
 
-      sugar:[
-        0,1,2,3
+      sugar: [
+        0,
+        1,
+        2,
+        3
       ],
 
-      syrup:[
+      syrup: [
         "None",
         "Vanilla",
         "Caramel",
         "Hazelnut"
-      ],
-
-      size:[
-        "Small",
-        "Medium",
-        "Large"
       ]
 
     }
+
   },
 
 
   {
     id:
-      "tea-builder",
+      "builder-tea",
 
     name:
-      "Tea",
+      "Tea / Chai Builder",
 
     category:
       "Coffee & Tea",
 
+    brand:
+      null,
+
+    type:
+      "builder",
+
     description:
-      "Black, green or milk tea",
+      "Black tea, green tea or milk chai with adjustable sugar",
 
     diet:
-      allDiets,
-
-    builderType:
-      "tea",
+      ALL_DIETS,
 
     unit:
       "cup",
 
+    builderType:
+      "tea",
+
+    nutritionStatus:
+      "builder",
+
     options: {
 
-      teaType:[
+      teaType: [
         "Black Tea",
         "Green Tea",
         "Milk Tea",
         "Masala Chai"
       ],
 
-      milk:[
+      milk: [
         "None",
         "Whole Milk",
         "Low Fat Milk",
@@ -982,131 +286,456 @@ const builders = [
         "Oat Milk"
       ],
 
-      sugar:[
-        0,1,2,3
+      sugar: [
+        0,
+        1,
+        2,
+        3
+      ],
+
+      size: [
+        "Small",
+        "Medium",
+        "Large"
       ]
 
     }
-  }
 
-];
-
-
-
-/* ======================================================
-   PROTEIN
-====================================================== */
-
-const proteins = [
-
-  {
-    id:"chicken",
-
-    name:
-      "Chicken Breast - Raw",
-
-    category:
-      "Protein",
-
-    description:
-      "Raw skinless",
-
-    diet:[
-      "nonveg"
-    ],
-
-    unit:"g",
-
-    nutritionPer100:{
-      calories:120,
-      proteinG:22.5,
-      carbsG:0,
-      fatG:2.6,
-      fibreG:0
-    }
   },
 
 
   {
-    id:"egg",
+    id:
+      "builder-dosa",
 
     name:
-      "Whole Egg",
+      "Dosa",
 
     category:
-      "Protein",
+      "Indian Meals",
+
+    brand:
+      null,
+
+    type:
+      "builder",
 
     description:
-      "Large egg",
+      "Plain, masala or paneer dosa with adjustable oil",
 
-    diet:[
+    diet:
+      ALL_DIETS,
+
+    unit:
+      "piece",
+
+    builderType:
+      "dosa",
+
+    nutritionStatus:
+      "builder",
+
+    options: {
+
+      dosaType: [
+        "Plain",
+        "Masala",
+        "Paneer"
+      ],
+
+      oil: [
+        0,
+        2.5,
+        5,
+        10
+      ]
+
+    }
+
+  },
+
+
+  {
+    id:
+      "builder-paratha",
+
+    name:
+      "Paratha",
+
+    category:
+      "Indian Meals",
+
+    brand:
+      null,
+
+    type:
+      "builder",
+
+    description:
+      "Plain, aloo or paneer paratha with exact added fat",
+
+    diet: [
+      "vegetarian",
       "eggitarian",
       "nonveg"
     ],
 
-    unit:"piece",
+    unit:
+      "piece",
 
-    nutritionPerPiece:{
-      calories:72,
-      proteinG:6.3,
-      carbsG:0.4,
-      fatG:4.8,
-      fibreG:0
+    builderType:
+      "paratha",
+
+    nutritionStatus:
+      "builder",
+
+    options: {
+
+      parathaType: [
+        "Plain",
+        "Aloo",
+        "Paneer"
+      ],
+
+      fatType: [
+        "None",
+        "Ghee",
+        "Oil"
+      ],
+
+      fatAmount: [
+        0,
+        2.5,
+        5,
+        10
+      ]
+
     }
+
   },
 
 
   {
-    id:"paneer",
+    id:
+      "poha",
 
     name:
-      "Paneer",
+      "Poha",
 
     category:
-      "Protein",
+      "Indian Meals",
+
+    brand:
+      null,
+
+    type:
+      "meal",
 
     description:
-      "Full-fat generic",
+      "Generic cooked bowl",
 
     diet:
-      vegetarianDiets,
+      ALL_DIETS,
 
-    unit:"g",
+    unit:
+      "bowl",
 
-    nutritionPer100:{
-      calories:265,
-      proteinG:18.3,
-      carbsG:1.2,
-      fatG:20.8,
-      fibreG:0
+    nutritionStatus:
+      "reference-generic",
+
+    basis:
+      "1 bowl",
+
+    nutrition: {
+
+      calories:
+        250,
+
+      proteinG:
+        6,
+
+      carbsG:
+        42,
+
+      fatG:
+        7,
+
+      fibreG:
+        4
+
     }
+
   },
 
 
   {
-    id:"tofu",
+    id:
+      "upma",
 
     name:
-      "Firm Tofu",
+      "Upma",
 
     category:
-      "Protein",
+      "Indian Meals",
+
+    brand:
+      null,
+
+    type:
+      "meal",
 
     description:
-      "Plain",
+      "Generic cooked bowl",
+
+    diet: [
+      "vegetarian",
+      "eggitarian",
+      "nonveg"
+    ],
+
+    unit:
+      "bowl",
+
+    nutritionStatus:
+      "reference-generic",
+
+    basis:
+      "1 bowl",
+
+    nutrition: {
+
+      calories:
+        230,
+
+      proteinG:
+        6,
+
+      carbsG:
+        36,
+
+      fatG:
+        7,
+
+      fibreG:
+        4
+
+    }
+
+  },
+
+
+  {
+    id:
+      "idli",
+
+    name:
+      "Idli",
+
+    category:
+      "Indian Meals",
+
+    brand:
+      null,
+
+    type:
+      "meal",
+
+    description:
+      "Medium idli",
 
     diet:
-      allDiets,
+      ALL_DIETS,
 
-    unit:"g",
+    unit:
+      "piece",
 
-    nutritionPer100:{
-      calories:144,
-      proteinG:17.3,
-      carbsG:2.8,
-      fatG:8.7,
-      fibreG:2.3
+    nutritionStatus:
+      "reference-generic",
+
+    basis:
+      "1 piece",
+
+    nutrition: {
+
+      calories:
+        58,
+
+      proteinG:
+        2,
+
+      carbsG:
+        12,
+
+      fatG:
+        0.4,
+
+      fibreG:
+        0.8
+
     }
+
+  },
+
+
+  {
+    id:
+      "vada-pav",
+
+    name:
+      "Vada Pav",
+
+    category:
+      "Indian Meals",
+
+    brand:
+      null,
+
+    type:
+      "meal",
+
+    description:
+      "Generic serving",
+
+    diet:
+      ALL_DIETS,
+
+    unit:
+      "piece",
+
+    nutritionStatus:
+      "reference-generic",
+
+    basis:
+      "1 piece",
+
+    nutrition: {
+
+      calories:
+        300,
+
+      proteinG:
+        7,
+
+      carbsG:
+        47,
+
+      fatG:
+        10,
+
+      fibreG:
+        4
+
+    }
+
+  },
+
+
+  {
+    id:
+      "pav-bhaji",
+
+    name:
+      "Pav Bhaji",
+
+    category:
+      "Indian Meals",
+
+    brand:
+      null,
+
+    type:
+      "meal",
+
+    description:
+      "2 pav + bhaji, generic serving",
+
+    diet: [
+      "vegetarian",
+      "eggitarian",
+      "nonveg"
+    ],
+
+    unit:
+      "plate",
+
+    nutritionStatus:
+      "reference-generic",
+
+    basis:
+      "1 plate",
+
+    nutrition: {
+
+      calories:
+        430,
+
+      proteinG:
+        11,
+
+      carbsG:
+        65,
+
+      fatG:
+        14,
+
+      fibreG:
+        8
+
+    }
+
+  },
+
+
+  {
+    id:
+      "misal-pav",
+
+    name:
+      "Misal Pav",
+
+    category:
+      "Indian Meals",
+
+    brand:
+      null,
+
+    type:
+      "meal",
+
+    description:
+      "Generic serving",
+
+    diet:
+      ALL_DIETS,
+
+    unit:
+      "plate",
+
+    nutritionStatus:
+      "reference-generic",
+
+    basis:
+      "1 plate",
+
+    nutrition: {
+
+      calories:
+        480,
+
+      proteinG:
+        17,
+
+      carbsG:
+        67,
+
+      fatG:
+        16,
+
+      fibreG:
+        11
+
+    }
+
   }
 
 ];
@@ -1121,15 +750,7 @@ const allFoods = [
 
   ...builders,
 
-  ...proteins,
-
-  ...pulses,
-
-  ...sprouts,
-
-  ...fruits,
-
-  ...vegetables
+  ...foods
 
 ];
 
@@ -1139,15 +760,17 @@ const allFoods = [
    STATE
 ====================================================== */
 
-let category =
+let activeCategory =
   "All";
 
 
 let meal =
   JSON.parse(
+
     localStorage.getItem(
-      "nutricoreMealV4"
+      "nutricoreMealV5"
     ) || "[]"
+
   );
 
 
@@ -1175,16 +798,103 @@ let selections =
 function availableFoods() {
 
   if (!plan.diet) {
+
     return allFoods;
+
   }
 
 
   return allFoods.filter(
+
     food =>
-      food.diet.includes(
+
+      (
+        food.diet ||
+        ALL_DIETS
+      )
+      .includes(
         plan.diet
       )
+
   );
+
+}
+
+
+
+/* ======================================================
+   STORAGE
+====================================================== */
+
+function saveMeal() {
+
+  localStorage.setItem(
+
+    "nutricoreMealV5",
+
+    JSON.stringify(meal)
+
+  );
+
+}
+
+
+
+/* ======================================================
+   STATUS BADGE
+====================================================== */
+
+function statusBadge(food) {
+
+  if (
+    food.nutritionStatus ===
+    "verified-label"
+  ) {
+
+    return `
+
+      <span class="mini-badge verified">
+        verified label
+      </span>
+
+    `;
+
+  }
+
+
+  if (
+    food.nutritionStatus ===
+    "label-required"
+  ) {
+
+    return `
+
+      <span class="mini-badge pending">
+        label verification required
+      </span>
+
+    `;
+
+  }
+
+
+  if (
+    food.nutritionStatus ===
+    "reference-generic"
+  ) {
+
+    return `
+
+      <span class="mini-badge verified">
+        reference value
+      </span>
+
+    `;
+
+  }
+
+
+  return "";
 
 }
 
@@ -1201,50 +911,60 @@ function renderFilters() {
     "All",
 
     ...new Set(
+
       availableFoods()
         .map(
           food =>
             food.category
         )
+
     )
 
   ];
 
 
   $("filterRow").innerHTML =
+
     categories.map(
-      item => `
+
+      category => `
 
         <button
           class="
             filter-button
             ${
-              category === item
+              category ===
+              activeCategory
                 ? "active"
                 : ""
             }
           "
-          data-category="${item}"
+          data-filter="${category}"
         >
-          ${item}
+
+          ${category}
+
         </button>
 
       `
+
     ).join("");
 
 
   document
     .querySelectorAll(
-      "[data-category]"
+      "[data-filter]"
     )
     .forEach(
+
       button => {
 
         button.onclick =
           () => {
 
-            category =
-              button.dataset.category;
+            activeCategory =
+              button.dataset.filter;
+
 
             renderFilters();
 
@@ -1253,6 +973,7 @@ function renderFilters() {
           };
 
       }
+
     );
 
 }
@@ -1260,54 +981,75 @@ function renderFilters() {
 
 
 /* ======================================================
-   QUICK
+   QUICK FOODS
 ====================================================== */
 
 function renderQuick() {
 
-  const quickIds = [
+  const ids = [
 
-    "roti-builder",
-    "coffee-builder",
-    "moong-dal",
-    "rajma",
+    "builder-roti",
+
+    "builder-coffee",
+
+    "builder-tea",
+
+    "chicken-breast-raw",
+
+    "egg-whole",
+
+    "paneer-full-fat",
+
+    "moong-dal-cooked",
+
     "moong-sprouts",
-    "green-peas",
-    "chicken",
-    "egg",
-    "paneer",
-    "banana",
-    "spinach",
-    "white-chickpeas"
+
+    "amul-taaza",
+
+    "amul-masti-dahi",
+
+    "rohu",
+
+    "banana"
 
   ];
 
 
-  const foods =
+  const list =
     availableFoods()
       .filter(
         food =>
-          quickIds.includes(
+          ids.includes(
             food.id
           )
       );
 
 
   $("quickFoodGrid").innerHTML =
-    foods.map(
+
+    list.map(
+
       food => `
 
         <button
           class="quick-food-card"
-          data-food="${food.id}"
+          data-open-food="${food.id}"
         >
 
           <strong>
+
+            ${
+              food.brand
+                ? `${food.brand} · `
+                : ""
+            }
+
             ${food.name}
+
           </strong>
 
           <span>
-            ${food.description}
+            ${food.description || ""}
           </span>
 
           <span class="quick-plus">
@@ -1317,130 +1059,231 @@ function renderQuick() {
         </button>
 
       `
+
     ).join("");
 
 
-  bindFoodButtons();
+  bindOpen();
 
 }
 
 
 
 /* ======================================================
-   RENDER LIBRARY
+   FOOD LIST
 ====================================================== */
 
 function renderFoods() {
 
-  const search =
+  const query =
+
     $("foodSearch")
       .value
       .trim()
       .toLowerCase();
 
 
-  let foods =
+  let list =
     availableFoods();
 
 
   if (
-    category !==
+    activeCategory !==
     "All"
   ) {
 
-    foods =
-      foods.filter(
+    list =
+      list.filter(
+
         food =>
           food.category ===
-          category
+          activeCategory
+
       );
 
   }
 
 
-  if (search) {
+  if (query) {
 
-    foods =
-      foods.filter(
+    list =
+      list.filter(
+
         food =>
-          `${food.name} ${food.category} ${food.description}`
-            .toLowerCase()
-            .includes(search)
+
+          [
+
+            food.name,
+
+            food.brand,
+
+            food.category,
+
+            food.subcategory,
+
+            food.description
+
+          ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase()
+          .includes(query)
+
       );
 
   }
 
 
   $("foodCount").textContent =
-    `${foods.length} foods`;
+    `${list.length} foods`;
 
 
   $("foodList").innerHTML =
-    foods.map(
-      food => `
 
-        <div class="food-item">
+    list.map(
 
-          <div class="food-name">
+      food => {
 
-            <strong>
-              ${food.name}
-            </strong>
+        const basis =
 
-            <span>
+          food.basis ||
 
-              ${food.description}
+          (
+            food.unit === "ml"
+              ? "100ml"
+
+              : food.unit === "piece"
+                ? "1 piece"
+
+                : "100g"
+          );
+
+
+        const macro =
+
+          food.nutrition
+
+            ? `
+
+              ${Math.round(
+                food.nutrition.calories || 0
+              )} kcal
 
               ·
 
-              ${
-                food.builderType
-                  ? "customise"
-                  : food.unit === "piece"
-                    ? "by piece"
-                    : "per serving"
-              }
+              ${(
+                food.nutrition.proteinG ||
+                0
+              ).toFixed(1)}g protein
 
-            </span>
+              / ${basis}
+
+            `
+
+            : "Exact nutrition not yet verified";
+
+
+        return `
+
+          <div class="food-item">
+
+            <div class="food-name">
+
+              <strong>
+
+                ${
+                  food.brand
+                    ? `${food.brand} — `
+                    : ""
+                }
+
+                ${food.name}
+
+              </strong>
+
+
+              <span>
+
+                ${food.description || ""}
+
+                ·
+
+                ${macro}
+
+              </span>
+
+
+              <div class="food-badges">
+
+                ${statusBadge(food)}
+
+                ${
+                  food.type === "branded"
+
+                    ? `
+
+                      <span class="mini-badge pune">
+                        Pune: check-live
+                      </span>
+
+                    `
+
+                    : ""
+                }
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="food-add"
+              data-open-food="${food.id}"
+              aria-label="Add ${food.name}"
+            >
+              +
+            </button>
 
           </div>
 
+        `;
 
-          <button
-            class="food-add"
-            data-food="${food.id}"
-          >
-            +
-          </button>
+      }
 
-        </div>
-
-      `
     ).join("");
 
 
-  bindFoodButtons();
+  bindOpen();
 
 }
 
 
 
-function bindFoodButtons() {
+/* ======================================================
+   OPEN BUTTONS
+====================================================== */
+
+function bindOpen() {
 
   document
     .querySelectorAll(
-      "[data-food]"
+      "[data-open-food]"
     )
     .forEach(
+
       button => {
 
         button.onclick =
-          () =>
+          () => {
+
             openCalculator(
-              button.dataset.food
+              button.dataset.openFood
             );
 
+          };
+
       }
+
     );
 
 }
@@ -1474,34 +1317,82 @@ function openCalculator(id) {
 
     Object.entries(
       activeFood.options
-    ).forEach(
+    )
+    .forEach(
+
       ([key, values]) => {
 
         selections[key] =
           values[0];
 
       }
+
     );
 
   }
 
 
   if (
-    activeFood.unit ===
-    "piece"
+    activeFood.builderType ===
+    "coffee" ||
+
+    activeFood.builderType ===
+    "tea"
   ) {
 
-    unit = "piece";
+    unit =
+      "cup";
 
-    quantity = "1";
+    quantity =
+      "1";
 
   }
 
+
+  else if (
+
+    activeFood.unit ===
+    "piece" ||
+
+    activeFood.unit ===
+    "bowl" ||
+
+    activeFood.unit ===
+    "plate"
+
+  ) {
+
+    unit =
+      activeFood.unit;
+
+    quantity =
+      "1";
+
+  }
+
+
+  else if (
+    activeFood.pieceWeightG
+  ) {
+
+    unit =
+      "piece";
+
+    quantity =
+      "1";
+
+  }
+
+
   else {
 
-    unit = "g";
+    unit =
+      activeFood.unit ||
+      "g";
 
-    quantity = "100";
+
+    quantity =
+      "100";
 
   }
 
@@ -1511,9 +1402,41 @@ function openCalculator(id) {
       activeFood.name;
 
 
+  $("calculatorBrand")
+    .textContent =
+
+      activeFood.brand
+
+        ? activeFood.brand
+
+        : activeFood.category;
+
+
+  $("calculatorStatus")
+    .textContent =
+
+      activeFood.nutritionStatus ===
+      "verified-label"
+
+        ? "Verified label"
+
+        : activeFood.nutritionStatus ===
+          "label-required"
+
+          ? "Label verification required"
+
+          : activeFood.nutritionStatus ===
+            "reference-generic"
+
+            ? "Reference estimate"
+
+            : "Custom builder";
+
+
   $("calculatorFoodDescription")
     .textContent =
-      activeFood.description;
+      activeFood.description ||
+      "Configure serving";
 
 
   renderOptions();
@@ -1530,214 +1453,24 @@ function openCalculator(id) {
 
 
 /* ======================================================
-   OPTIONS
+   OPTION LABELS
 ====================================================== */
-
-function renderOptions() {
-
-  let html = "";
-
-
-  if (
-    activeFood.pieceWeightG
-  ) {
-
-    html += `
-
-      <div class="calculator-option-group">
-
-        <span>
-          Measure as
-        </span>
-
-        <div class="scroll-options">
-
-          <button
-            class="
-              option-chip
-              ${
-                unit === "piece"
-                  ? "selected"
-                  : ""
-              }
-            "
-            data-unit="piece"
-          >
-            Piece
-          </button>
-
-          <button
-            class="
-              option-chip
-              ${
-                unit === "g"
-                  ? "selected"
-                  : ""
-              }
-            "
-            data-unit="g"
-          >
-            Grams
-          </button>
-
-        </div>
-
-      </div>
-
-    `;
-
-  }
-
-
-  if (
-    activeFood.options
-  ) {
-
-    Object.entries(
-      activeFood.options
-    ).forEach(
-      ([key, values]) => {
-
-        html += `
-
-          <div class="calculator-option-group">
-
-            <span>
-              ${optionTitle(key)}
-            </span>
-
-            <div class="scroll-options">
-
-              ${
-                values.map(
-                  value => `
-
-                    <button
-                      class="
-                        option-chip
-                        ${
-                          selections[key] === value
-                            ? "selected"
-                            : ""
-                        }
-                      "
-                      data-option="${key}"
-                      data-value="${value}"
-                    >
-
-                      ${optionValue(
-                        key,
-                        value
-                      )}
-
-                    </button>
-
-                  `
-                ).join("")
-              }
-
-            </div>
-
-          </div>
-
-        `;
-
-      }
-    );
-
-  }
-
-
-  $("calculatorOptions")
-    .innerHTML =
-      html;
-
-
-  document
-    .querySelectorAll(
-      "[data-unit]"
-    )
-    .forEach(
-      button => {
-
-        button.onclick =
-          () => {
-
-            unit =
-              button.dataset.unit;
-
-
-            quantity =
-              unit === "piece"
-                ? "1"
-                : "100";
-
-
-            renderOptions();
-
-            updatePreview();
-
-          };
-
-      }
-    );
-
-
-  document
-    .querySelectorAll(
-      "[data-option]"
-    )
-    .forEach(
-      button => {
-
-        button.onclick =
-          () => {
-
-            const key =
-              button.dataset.option;
-
-
-            const original =
-              activeFood
-                .options[key]
-                .find(
-                  value =>
-                    String(value) ===
-                    button.dataset.value
-                );
-
-
-            selections[key] =
-              original;
-
-
-            renderOptions();
-
-            updatePreview();
-
-          };
-
-      }
-    );
-
-}
-
-
 
 function optionTitle(key) {
 
-  const labels = {
+  return {
 
-    size:"Size",
+    size:
+      "Size",
 
     fatType:
-      "Added Fat",
+      "Added fat",
 
     fatAmount:
-      "Fat Amount",
+      "Fat per item",
 
     coffeeType:
-      "Coffee",
+      "Coffee type",
 
     milk:
       "Milk",
@@ -1749,15 +1482,18 @@ function optionTitle(key) {
       "Syrup",
 
     teaType:
-      "Tea"
+      "Tea type",
 
-  };
+    dosaType:
+      "Dosa type",
 
+    oil:
+      "Oil used",
 
-  return (
-    labels[key] ||
-    key
-  );
+    parathaType:
+      "Paratha type"
+
+  }[key] || key;
 
 }
 
@@ -1769,20 +1505,33 @@ function optionValue(
 ) {
 
   if (
-    key === "fatAmount"
+    key === "fatAmount" ||
+    key === "oil"
   ) {
 
-    const labels = {
-      0:"None",
-      2.5:"½ tsp",
-      5:"1 tsp",
-      7.5:"1½ tsp",
-      10:"2 tsp",
-      15:"1 tbsp"
-    };
+    return {
 
+      0:
+        "None",
 
-    return labels[value];
+      2.5:
+        "½ tsp",
+
+      5:
+        "1 tsp",
+
+      7.5:
+        "1½ tsp",
+
+      10:
+        "2 tsp",
+
+      15:
+        "1 tbsp"
+
+    }[value] ||
+
+    `${value} ml`;
 
   }
 
@@ -1803,7 +1552,1028 @@ function optionValue(
 
 
 /* ======================================================
-   FOOD NUTRITION
+   RENDER OPTIONS
+====================================================== */
+
+function renderOptions() {
+
+  let html =
+    "";
+
+
+  if (
+    activeFood.pieceWeightG
+  ) {
+
+    html += `
+
+      <div class="calculator-option-group">
+
+        <span>
+          Measure as
+        </span>
+
+
+        <div class="scroll-options">
+
+          <button
+            class="
+              option-chip
+              ${
+                unit === "piece"
+                  ? "selected"
+                  : ""
+              }
+            "
+            data-unit-choice="piece"
+          >
+            Piece
+          </button>
+
+
+          <button
+            class="
+              option-chip
+              ${
+                unit === "g"
+                  ? "selected"
+                  : ""
+              }
+            "
+            data-unit-choice="g"
+          >
+            Grams
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if (
+    activeFood.options
+  ) {
+
+    html +=
+
+      Object.entries(
+        activeFood.options
+      )
+      .map(
+
+        ([key, values]) => `
+
+          <div class="calculator-option-group">
+
+            <span>
+              ${optionTitle(key)}
+            </span>
+
+
+            <div class="scroll-options">
+
+              ${
+                values.map(
+
+                  value => `
+
+                    <button
+                      class="
+                        option-chip
+                        ${
+                          selections[key] ===
+                          value
+                            ? "selected"
+                            : ""
+                        }
+                      "
+                      data-option-key="${key}"
+                      data-option-value="${value}"
+                    >
+
+                      ${optionValue(
+                        key,
+                        value
+                      )}
+
+                    </button>
+
+                  `
+
+                ).join("")
+              }
+
+            </div>
+
+          </div>
+
+        `
+
+      ).join("");
+
+  }
+
+
+  $("calculatorOptions")
+    .innerHTML =
+      html;
+
+
+
+  document
+    .querySelectorAll(
+      "[data-unit-choice]"
+    )
+    .forEach(
+
+      button => {
+
+        button.onclick =
+          () => {
+
+            unit =
+              button.dataset.unitChoice;
+
+
+            quantity =
+              unit === "piece"
+                ? "1"
+                : "100";
+
+
+            renderOptions();
+
+            updatePreview();
+
+          };
+
+      }
+
+    );
+
+
+
+  document
+    .querySelectorAll(
+      "[data-option-key]"
+    )
+    .forEach(
+
+      button => {
+
+        button.onclick =
+          () => {
+
+            const key =
+              button.dataset.optionKey;
+
+
+            selections[key] =
+
+              activeFood
+                .options[key]
+                .find(
+
+                  value =>
+
+                    String(value) ===
+                    button.dataset.optionValue
+
+                );
+
+
+            renderOptions();
+
+            updatePreview();
+
+          };
+
+      }
+
+    );
+
+}
+
+
+
+/* ======================================================
+   NUTRITION MULTIPLIER
+====================================================== */
+
+function multiplyNutrition(
+  data,
+  multiplier
+) {
+
+  const result = {};
+
+
+  for (
+    const [key, value]
+    of Object.entries(
+      data || {}
+    )
+  ) {
+
+    result[key] =
+      Number(
+        value || 0
+      ) *
+      multiplier;
+
+  }
+
+
+  return result;
+
+}
+
+
+
+/* ======================================================
+   STANDARD FOOD
+====================================================== */
+
+function calculateStandard(
+  amount
+) {
+
+  if (
+    !activeFood.nutrition
+  ) {
+
+    return null;
+
+  }
+
+
+  if (
+
+    activeFood.unit ===
+    "piece" &&
+
+    !activeFood.pieceWeightG &&
+
+    activeFood.basis ===
+    "1 piece"
+
+  ) {
+
+    return multiplyNutrition(
+
+      activeFood.nutrition,
+
+      amount
+
+    );
+
+  }
+
+
+  if (
+
+    [
+      "piece",
+      "bowl",
+      "plate"
+    ]
+    .includes(
+      activeFood.unit
+    ) &&
+
+    activeFood.basis &&
+
+    activeFood.basis
+      .startsWith("1 ")
+
+  ) {
+
+    return multiplyNutrition(
+
+      activeFood.nutrition,
+
+      amount
+
+    );
+
+  }
+
+
+  let baseAmount =
+    100;
+
+
+  let actual =
+    amount;
+
+
+  if (
+    unit === "piece" &&
+    activeFood.pieceWeightG
+  ) {
+
+    actual =
+      activeFood.pieceWeightG *
+      amount;
+
+  }
+
+
+  return multiplyNutrition(
+
+    activeFood.nutrition,
+
+    actual /
+    baseAmount
+
+  );
+
+}
+
+
+
+/* ======================================================
+   ROTI
+====================================================== */
+
+function calculateRoti(
+  quantity
+) {
+
+  const sizeFactor = {
+
+    Small:
+      0.8,
+
+    Medium:
+      1,
+
+    Large:
+      1.25
+
+  }[
+    selections.size
+  ] || 1;
+
+
+  const addedFat =
+
+    selections.fatType ===
+    "None"
+
+      ? 0
+
+      : Number(
+          selections.fatAmount ||
+          0
+        ) *
+        0.91;
+
+
+  return {
+
+    calories:
+
+      (
+        105 *
+        sizeFactor +
+
+        addedFat *
+        9
+      ) *
+      quantity,
+
+
+    proteinG:
+
+      3.5 *
+      sizeFactor *
+      quantity,
+
+
+    carbsG:
+
+      21 *
+      sizeFactor *
+      quantity,
+
+
+    fatG:
+
+      (
+        0.8 *
+        sizeFactor +
+
+        addedFat
+      ) *
+      quantity,
+
+
+    fibreG:
+
+      3 *
+      sizeFactor *
+      quantity
+
+  };
+
+}
+
+
+
+/* ======================================================
+   COFFEE
+====================================================== */
+
+function calculateCoffee(
+  quantity
+) {
+
+  const type =
+    selections.coffeeType;
+
+
+  const size =
+    selections.size;
+
+
+  const milk =
+    selections.milk;
+
+
+  const black = {
+
+    Americano: {
+
+      Small:
+        [3,0.2,0.5,0],
+
+      Medium:
+        [5,0.3,0.8,0],
+
+      Large:
+        [7,0.4,1.1,0]
+
+    },
+
+
+    Espresso: {
+
+      Small:
+        [3,0.2,0.5,0],
+
+      Medium:
+        [3,0.2,0.5,0],
+
+      Large:
+        [3,0.2,0.5,0]
+
+    },
+
+
+    Doppio: {
+
+      Small:
+        [6,0.4,1,0],
+
+      Medium:
+        [6,0.4,1,0],
+
+      Large:
+        [6,0.4,1,0]
+
+    },
+
+
+    Latte: {
+
+      Small:
+        [5,0.3,1,0],
+
+      Medium:
+        [5,0.3,1,0],
+
+      Large:
+        [6,0.4,1.2,0]
+
+    },
+
+
+    Cappuccino: {
+
+      Small:
+        [4,0.3,0.8,0],
+
+      Medium:
+        [5,0.3,1,0],
+
+      Large:
+        [6,0.4,1.2,0]
+
+    },
+
+
+    "Flat White": {
+
+      Small:
+        [5,0.3,1,0],
+
+      Medium:
+        [5,0.3,1,0],
+
+      Large:
+        [6,0.4,1.2,0]
+
+    },
+
+
+    Cortado: {
+
+      Small:
+        [5,0.3,1,0],
+
+      Medium:
+        [5,0.3,1,0],
+
+      Large:
+        [5,0.3,1,0]
+
+    },
+
+
+    Macchiato: {
+
+      Small:
+        [4,0.3,0.8,0],
+
+      Medium:
+        [5,0.3,1,0],
+
+      Large:
+        [5,0.3,1,0]
+
+    },
+
+
+    Mocha: {
+
+      Small:
+        [25,0.5,5,0.5],
+
+      Medium:
+        [25,0.5,5,0.5],
+
+      Large:
+        [30,0.6,6,0.6]
+
+    }
+
+  };
+
+
+  const base =
+    black[type][size];
+
+
+  const milkPerMedium = {
+
+    None:
+      [0,0,0,0],
+
+    "Whole Milk":
+      [122,6.3,9.5,6.6],
+
+    "Low Fat Milk":
+      [92,6.7,9.8,3],
+
+    "Soy Milk":
+      [80,7,4,4],
+
+    "Oat Milk":
+      [120,3,16,5]
+
+  }[milk];
+
+
+  const sizeFactor = {
+
+    Small:
+      0.75,
+
+    Medium:
+      1,
+
+    Large:
+      1.3
+
+  }[size];
+
+
+  const fraction =
+
+    type === "Latte"
+      ? 1
+
+      : type === "Cappuccino"
+        ? 0.7
+
+      : type === "Flat White"
+        ? 0.8
+
+      : type === "Cortado"
+        ? 0.4
+
+      : type === "Macchiato"
+        ? 0.1
+
+      : type === "Mocha"
+        ? 0.8
+
+      : (
+          milk === "None"
+            ? 0
+            : 0.12
+        );
+
+
+  const milkFactor =
+    fraction *
+    sizeFactor;
+
+
+  const sugar =
+    Number(
+      selections.sugar ||
+      0
+    );
+
+
+  const syrupCalories =
+
+    selections.syrup ===
+    "None"
+
+      ? 0
+
+      : 60;
+
+
+  const syrupCarbs =
+
+    selections.syrup ===
+    "None"
+
+      ? 0
+
+      : 15;
+
+
+  return {
+
+    calories:
+
+      (
+        base[0] +
+
+        milkPerMedium[0] *
+        milkFactor +
+
+        sugar *
+        16 +
+
+        syrupCalories
+      ) *
+      quantity,
+
+
+    proteinG:
+
+      (
+        base[1] +
+
+        milkPerMedium[1] *
+        milkFactor
+      ) *
+      quantity,
+
+
+    carbsG:
+
+      (
+        base[2] +
+
+        milkPerMedium[2] *
+        milkFactor +
+
+        sugar *
+        4 +
+
+        syrupCarbs
+      ) *
+      quantity,
+
+
+    fatG:
+
+      (
+        base[3] +
+
+        milkPerMedium[3] *
+        milkFactor
+      ) *
+      quantity,
+
+
+    fibreG:
+      0
+
+  };
+
+}
+
+
+
+/* ======================================================
+   TEA
+====================================================== */
+
+function calculateTea(
+  quantity
+) {
+
+  const sizeFactor = {
+
+    Small:
+      0.75,
+
+    Medium:
+      1,
+
+    Large:
+      1.3
+
+  }[
+    selections.size
+  ] || 1;
+
+
+  const milk = {
+
+    None:
+      [0,0,0,0],
+
+    "Whole Milk":
+      [55,2.8,4,3],
+
+    "Low Fat Milk":
+      [40,3,4,1.3],
+
+    "Soy Milk":
+      [45,3.5,3,2],
+
+    "Oat Milk":
+      [55,1.3,8,2]
+
+  }[
+    selections.milk
+  ];
+
+
+  const sugar =
+    Number(
+      selections.sugar ||
+      0
+    );
+
+
+  const base =
+
+    selections.teaType ===
+    "Masala Chai"
+
+      ? 8
+
+      : 2;
+
+
+  return {
+
+    calories:
+
+      (
+        base +
+
+        milk[0] *
+        sizeFactor +
+
+        sugar *
+        16
+      ) *
+      quantity,
+
+
+    proteinG:
+
+      milk[1] *
+      sizeFactor *
+      quantity,
+
+
+    carbsG:
+
+      (
+        milk[2] *
+        sizeFactor +
+
+        sugar *
+        4
+      ) *
+      quantity,
+
+
+    fatG:
+
+      milk[3] *
+      sizeFactor *
+      quantity,
+
+
+    fibreG:
+      0
+
+  };
+
+}
+
+
+
+/* ======================================================
+   DOSA
+====================================================== */
+
+function calculateDosa(
+  quantity
+) {
+
+  const data = {
+
+    Plain:
+      [170,4,29,4.5,1.5],
+
+    Masala:
+      [320,7,51,10,4],
+
+    Paneer:
+      [390,14,42,18,4]
+
+  }[
+    selections.dosaType
+  ];
+
+
+  const oilFat =
+
+    Number(
+      selections.oil ||
+      0
+    ) *
+    0.92;
+
+
+  return {
+
+    calories:
+
+      (
+        data[0] +
+
+        oilFat *
+        9
+      ) *
+      quantity,
+
+
+    proteinG:
+
+      data[1] *
+      quantity,
+
+
+    carbsG:
+
+      data[2] *
+      quantity,
+
+
+    fatG:
+
+      (
+        data[3] +
+        oilFat
+      ) *
+      quantity,
+
+
+    fibreG:
+
+      data[4] *
+      quantity
+
+  };
+
+}
+
+
+
+/* ======================================================
+   PARATHA
+====================================================== */
+
+function calculateParatha(
+  quantity
+) {
+
+  const data = {
+
+    Plain:
+      [165,5,30,3,3],
+
+    Aloo:
+      [230,6,42,4,5],
+
+    Paneer:
+      [270,12,34,9,4]
+
+  }[
+    selections.parathaType
+  ];
+
+
+  const extraFat =
+
+    selections.fatType ===
+    "None"
+
+      ? 0
+
+      : Number(
+          selections.fatAmount ||
+          0
+        ) *
+        0.91;
+
+
+  return {
+
+    calories:
+
+      (
+        data[0] +
+
+        extraFat *
+        9
+      ) *
+      quantity,
+
+
+    proteinG:
+
+      data[1] *
+      quantity,
+
+
+    carbsG:
+
+      data[2] *
+      quantity,
+
+
+    fatG:
+
+      (
+        data[3] +
+        extraFat
+      ) *
+      quantity,
+
+
+    fibreG:
+
+      data[4] *
+      quantity
+
+  };
+
+}
+
+
+
+/* ======================================================
+   CALCULATE CURRENT
 ====================================================== */
 
 function calculateFood() {
@@ -1851,357 +2621,32 @@ function calculateFood() {
 
 
   if (
-    activeFood.nutritionPerPiece
+    activeFood.builderType ===
+    "dosa"
   ) {
 
-    return multiply(
-      activeFood.nutritionPerPiece,
+    return calculateDosa(
       amount
     );
 
   }
 
 
-  let grams =
-    amount;
-
-
   if (
-    unit === "piece" &&
-    activeFood.pieceWeightG
+    activeFood.builderType ===
+    "paratha"
   ) {
 
-    grams =
-      activeFood.pieceWeightG *
-      amount;
-
-  }
-
-
-  return multiply(
-    activeFood.nutritionPer100,
-    grams / 100
-  );
-
-}
-
-
-
-function multiply(
-  data,
-  multiplier
-) {
-
-  const result = {};
-
-
-  Object.entries(
-    data
-  ).forEach(
-    ([key,value]) => {
-
-      result[key] =
-        Number(
-          value || 0
-        ) *
-        multiplier;
-
-    }
-  );
-
-
-  return result;
-
-}
-
-
-
-/* ======================================================
-   ROTI
-====================================================== */
-
-function calculateRoti(amount) {
-
-  const sizeFactor = {
-
-    Small:0.8,
-
-    Medium:1,
-
-    Large:1.25
-
-  }[
-    selections.size
-  ];
-
-
-  let addedFat =
-    0;
-
-
-  if (
-    selections.fatType !==
-    "None"
-  ) {
-
-    addedFat =
-      Number(
-        selections.fatAmount
-      ) *
-      0.91;
-
-  }
-
-
-  return {
-
-    calories:
-      (
-        105 *
-        sizeFactor +
-        addedFat * 9
-      ) *
-      amount,
-
-    proteinG:
-      3.5 *
-      sizeFactor *
-      amount,
-
-    carbsG:
-      21 *
-      sizeFactor *
-      amount,
-
-    fatG:
-      (
-        0.8 *
-        sizeFactor +
-        addedFat
-      ) *
-      amount,
-
-    fibreG:
-      3 *
-      sizeFactor *
+    return calculateParatha(
       amount
-
-  };
-
-}
-
-
-
-/* ======================================================
-   COFFEE
-====================================================== */
-
-function calculateCoffee(amount) {
-
-  const coffeeMap = {
-
-    Espresso:
-      [3,0.2,0.5,0],
-
-    Americano:
-      [5,0.3,1,0],
-
-    Latte:
-      [15,0.5,2,0],
-
-    Cappuccino:
-      [10,0.5,1.5,0],
-
-    "Flat White":
-      [10,0.5,1.5,0],
-
-    Cortado:
-      [8,0.4,1,0],
-
-    Macchiato:
-      [6,0.3,0.8,0],
-
-    Mocha:
-      [80,2,15,2]
-
-  };
-
-
-  const milkMap = {
-
-    None:
-      [0,0,0,0],
-
-    "Whole Milk":
-      [90,5,7,5],
-
-    "Low Fat Milk":
-      [65,5,7,2],
-
-    "Soy Milk":
-      [70,6,5,3],
-
-    "Oat Milk":
-      [90,2,14,3]
-
-  };
-
-
-  const coffee =
-    coffeeMap[
-      selections.coffeeType
-    ];
-
-
-  const milk =
-    milkMap[
-      selections.milk
-    ];
-
-
-  const sugar =
-    Number(
-      selections.sugar
     );
 
-
-  const syrup =
-    selections.syrup ===
-    "None"
-      ? 0
-      : 60;
+  }
 
 
-  const sizeFactor = {
-
-    Small:0.8,
-
-    Medium:1,
-
-    Large:1.3
-
-  }[
-    selections.size
-  ];
-
-
-  return {
-
-    calories:
-      (
-        coffee[0] +
-        milk[0] +
-        sugar * 16 +
-        syrup
-      ) *
-      sizeFactor *
-      amount,
-
-    proteinG:
-      (
-        coffee[1] +
-        milk[1]
-      ) *
-      sizeFactor *
-      amount,
-
-    carbsG:
-      (
-        coffee[2] +
-        milk[2] +
-        sugar * 4 +
-        (
-          selections.syrup ===
-          "None"
-            ? 0
-            : 15
-        )
-      ) *
-      sizeFactor *
-      amount,
-
-    fatG:
-      (
-        coffee[3] +
-        milk[3]
-      ) *
-      sizeFactor *
-      amount,
-
-    fibreG:0
-
-  };
-
-}
-
-
-
-/* ======================================================
-   TEA
-====================================================== */
-
-function calculateTea(amount) {
-
-  const milkMap = {
-
-    None:
-      [0,0,0,0],
-
-    "Whole Milk":
-      [55,2.8,4,3],
-
-    "Low Fat Milk":
-      [40,3,4,1.3],
-
-    "Soy Milk":
-      [45,3.5,3,2],
-
-    "Oat Milk":
-      [55,1.3,8,2]
-
-  };
-
-
-  const milk =
-    milkMap[
-      selections.milk
-    ];
-
-
-  const sugar =
-    Number(
-      selections.sugar
-    );
-
-
-  return {
-
-    calories:
-      (
-        2 +
-        milk[0] +
-        sugar * 16
-      ) *
-      amount,
-
-    proteinG:
-      milk[1] *
-      amount,
-
-    carbsG:
-      (
-        milk[2] +
-        sugar * 4
-      ) *
-      amount,
-
-    fatG:
-      milk[3] *
-      amount,
-
-    fibreG:0
-
-  };
+  return calculateStandard(
+    amount
+  );
 
 }
 
@@ -2223,43 +2668,117 @@ function updatePreview() {
       unit;
 
 
-  const nutrition =
+  $("calculatorQuantityLabel")
+    .textContent =
+
+      (
+        unit === "cup" ||
+
+        unit === "piece" ||
+
+        unit === "bowl" ||
+
+        unit === "plate"
+      )
+
+        ? "Servings"
+
+        : "Amount";
+
+
+  const data =
     calculateFood();
+
+
+  const unavailable =
+    !data;
 
 
   $("calculatorCalories")
     .textContent =
-      Math.round(
-        nutrition.calories || 0
-      );
+
+      unavailable
+
+        ? "—"
+
+        : Math.round(
+            data.calories ||
+            0
+          );
 
 
   $("calculatorProtein")
     .textContent =
-      `${(
-        nutrition.proteinG || 0
-      ).toFixed(1)} g`;
+
+      unavailable
+
+        ? "—"
+
+        : `${(
+            data.proteinG ||
+            0
+          ).toFixed(1)} g`;
 
 
   $("calculatorCarbs")
     .textContent =
-      `${(
-        nutrition.carbsG || 0
-      ).toFixed(1)} g`;
+
+      unavailable
+
+        ? "—"
+
+        : `${(
+            data.carbsG ||
+            0
+          ).toFixed(1)} g`;
 
 
   $("calculatorFat")
     .textContent =
-      `${(
-        nutrition.fatG || 0
-      ).toFixed(1)} g`;
+
+      unavailable
+
+        ? "—"
+
+        : `${(
+            data.fatG ||
+            0
+          ).toFixed(1)} g`;
+
+
+  $("calculatorAdd")
+    .disabled =
+      unavailable;
+
+
+  if (unavailable) {
+
+    $("calculatorWarning")
+      .classList
+      .remove("hidden");
+
+
+    $("calculatorWarning")
+      .textContent =
+
+        "Exact current nutrition has not been verified for this branded product, so NutriCore will not invent values or add it to your totals. Use the generic equivalent for now, or add the current pack label to the database later.";
+
+  }
+
+  else {
+
+    $("calculatorWarning")
+      .classList
+      .add("hidden");
+
+  }
 
 }
 
 
 
 /* ======================================================
-   KEYPAD
+   NUMBER PAD
 ====================================================== */
 
 document
@@ -2267,6 +2786,7 @@ document
     "[data-number]"
   )
   .forEach(
+
     button => {
 
       button.onclick =
@@ -2286,22 +2806,15 @@ document
           }
 
 
-          if (
+          quantity =
+
             quantity === "0" &&
             character !== "."
-          ) {
 
-            quantity =
-              character;
+              ? character
 
-          }
-
-          else {
-
-            quantity +=
-              character;
-
-          }
+              : quantity +
+                character;
 
 
           updatePreview();
@@ -2309,7 +2822,9 @@ document
         };
 
     }
+
   );
+
 
 
 $("calculatorBackspace")
@@ -2327,6 +2842,7 @@ $("calculatorBackspace")
     };
 
 
+
 $("calculatorClear")
   .onclick =
     () => {
@@ -2341,8 +2857,135 @@ $("calculatorClear")
 
 
 
+$("calculatorClose")
+  .onclick =
+    () => {
+
+      $("foodCalculatorOverlay")
+        .classList
+        .remove("open");
+
+    };
+
+
+
+$("foodCalculatorOverlay")
+  .onclick =
+    event => {
+
+      if (
+        event.target ===
+        $("foodCalculatorOverlay")
+      ) {
+
+        $("foodCalculatorOverlay")
+          .classList
+          .remove("open");
+
+      }
+
+    };
+
+
+
 /* ======================================================
-   ADD
+   MEAL NAME
+====================================================== */
+
+function mealName() {
+
+  if (
+    activeFood.builderType ===
+    "roti"
+  ) {
+
+    const fat =
+
+      selections.fatType ===
+      "None"
+
+        ? ""
+
+        : ` + ${selections.fatAmount} ml ${selections.fatType}`;
+
+
+    return `${selections.size} Roti${fat}`;
+
+  }
+
+
+  if (
+    activeFood.builderType ===
+    "coffee"
+  ) {
+
+    return `
+
+      ${selections.size}
+
+      ${selections.coffeeType}
+
+      ${
+        selections.milk !== "None"
+
+          ? ` · ${selections.milk}`
+
+          : ""
+      }
+
+    `.replace(/\s+/g," ").trim();
+
+  }
+
+
+  if (
+    activeFood.builderType ===
+    "tea"
+  ) {
+
+    return `
+
+      ${selections.size}
+
+      ${selections.teaType}
+
+    `.replace(/\s+/g," ").trim();
+
+  }
+
+
+  if (
+    activeFood.builderType ===
+    "dosa"
+  ) {
+
+    return `${selections.dosaType} Dosa`;
+
+  }
+
+
+  if (
+    activeFood.builderType ===
+    "paratha"
+  ) {
+
+    return `${selections.parathaType} Paratha`;
+
+  }
+
+
+  return activeFood.brand
+
+    ? `${activeFood.brand} ${activeFood.name}`
+
+    : activeFood.name;
+
+}
+
+
+
+/* ======================================================
+   ADD TO MEAL
 ====================================================== */
 
 $("calculatorAdd")
@@ -2353,10 +2996,19 @@ $("calculatorAdd")
         calculateFood();
 
 
+      if (!nutrition) {
+        return;
+      }
+
+
       meal.push({
 
+        uid:
+          Date.now() +
+          Math.random(),
+
         name:
-          activeFood.name,
+          mealName(),
 
         quantity:
           Number(
@@ -2384,53 +3036,8 @@ $("calculatorAdd")
 
 
 /* ======================================================
-   CLOSE
+   RENDER MEAL
 ====================================================== */
-
-$("calculatorClose")
-  .onclick =
-    () => {
-
-      $("foodCalculatorOverlay")
-        .classList
-        .remove("open");
-
-    };
-
-
-$("foodCalculatorOverlay")
-  .onclick =
-    event => {
-
-      if (
-        event.target ===
-        $("foodCalculatorOverlay")
-      ) {
-
-        $("foodCalculatorOverlay")
-          .classList
-          .remove("open");
-
-      }
-
-    };
-
-
-
-/* ======================================================
-   MEAL
-====================================================== */
-
-function saveMeal() {
-
-  localStorage.setItem(
-    "nutricoreMealV4",
-    JSON.stringify(meal)
-  );
-
-}
-
-
 
 function renderMeal() {
 
@@ -2441,13 +3048,14 @@ function renderMeal() {
 
         <div class="empty-state">
 
-          Your food list is empty.
+          Nothing added yet.
 
           <br><br>
 
-          Search for dal, sprouts,
-          fruit, vegetables, chicken,
-          paneer, eggs or any other food.
+          Search fruit, vegetables,
+          dal, sprouts, dairy, fish
+          or a branded product and
+          configure the amount you ate.
 
         </div>
 
@@ -2459,7 +3067,9 @@ function renderMeal() {
 
     $("mealItems")
       .innerHTML =
+
         meal.map(
+
           (item,index) => `
 
             <div class="meal-item">
@@ -2473,13 +3083,15 @@ function renderMeal() {
                 <span>
 
                   ${item.quantity}
+
                   ${item.unit}
 
                   ·
 
                   ${
                     Math.round(
-                      item.nutrition.calories
+                      item.nutrition.calories ||
+                      0
                     )
                   } kcal
 
@@ -2490,7 +3102,7 @@ function renderMeal() {
                       item.nutrition.proteinG ||
                       0
                     ).toFixed(1)
-                  }g protein
+                  } g protein
 
                 </span>
 
@@ -2507,6 +3119,7 @@ function renderMeal() {
             </div>
 
           `
+
         ).join("");
 
   }
@@ -2517,16 +3130,20 @@ function renderMeal() {
       "[data-remove]"
     )
     .forEach(
+
       button => {
 
         button.onclick =
           () => {
 
             meal.splice(
+
               Number(
                 button.dataset.remove
               ),
+
               1
+
             );
 
 
@@ -2537,6 +3154,7 @@ function renderMeal() {
           };
 
       }
+
     );
 
 
@@ -2554,49 +3172,72 @@ function updateTotals() {
 
   const total = {
 
-    calories:0,
+    calories:
+      0,
 
-    proteinG:0,
+    proteinG:
+      0,
 
-    carbsG:0,
+    carbsG:
+      0,
 
-    fatG:0,
+    fatG:
+      0,
 
-    fibreG:0,
+    fibreG:
+      0,
 
-    calciumMg:0,
+    calciumMg:
+      0,
 
-    ironMg:0,
+    ironMg:
+      0,
 
-    magnesiumMg:0,
+    magnesiumMg:
+      0,
 
-    potassiumMg:0,
+    potassiumMg:
+      0,
 
-    vitaminCmg:0,
+    vitaminCmg:
+      0,
 
-    folateUg:0
+    vitaminDug:
+      0,
+
+    vitaminB12Ug:
+      0,
+
+    folateUg:
+      0
 
   };
 
 
   meal.forEach(
+
     item => {
 
       Object.keys(
         total
-      ).forEach(
+      )
+      .forEach(
+
         key => {
 
           total[key] +=
+
             Number(
               item.nutrition[key] ||
               0
             );
 
         }
+
       );
 
     }
+
   );
 
 
@@ -2622,61 +3263,64 @@ function updateTotals() {
       `${total.fatG.toFixed(1)} g`;
 
 
-  updateProgress(total);
 
-  renderMicros(total);
+  const caloriePercent =
 
-  renderSuggestion(total);
-
-}
-
-
-
-/* ======================================================
-   PROGRESS
-====================================================== */
-
-function updateProgress(total) {
-
-  const caloriesPercent =
     total.calories /
     targets.calories *
     100;
 
 
+  $("progressText")
+    .textContent =
+      `${Math.round(
+        caloriePercent
+      )}%`;
+
+
   $("progressBar")
     .style.width =
       `${Math.min(
-        caloriesPercent,
+        caloriePercent,
         100
       )}%`;
 
 
-  $("progressText")
-    .textContent =
-      `${Math.round(
-        caloriesPercent
-      )}%`;
-
-
   const calorieLeft =
+
     targets.calories -
     total.calories;
 
 
   $("calorieRemainingText")
     .textContent =
+
       calorieLeft >= 0
 
-        ? `${Math.round(calorieLeft)} kcal remaining`
+        ? `${Math.round(
+            calorieLeft
+          )} kcal remaining`
 
-        : `${Math.abs(Math.round(calorieLeft))} kcal over`;
+        : `${Math.abs(
+            Math.round(
+              calorieLeft
+            )
+          )} kcal over`;
+
 
 
   const proteinPercent =
+
     total.proteinG /
     targets.protein *
     100;
+
+
+  $("proteinProgressText")
+    .textContent =
+      `${Math.round(
+        proteinPercent
+      )}%`;
 
 
   $("proteinProgressBar")
@@ -2687,55 +3331,64 @@ function updateProgress(total) {
       )}%`;
 
 
-  $("proteinProgressText")
-    .textContent =
-      `${Math.round(
-        proteinPercent
-      )}%`;
-
-
   const proteinLeft =
+
     targets.protein -
     total.proteinG;
 
 
   $("proteinRemainingText")
     .textContent =
+
       proteinLeft >= 0
 
         ? `${proteinLeft.toFixed(1)} g remaining`
 
-        : `${Math.abs(proteinLeft).toFixed(1)} g above`;
+        : `${Math.abs(
+            proteinLeft
+          ).toFixed(1)} g above`;
+
+
+  renderMicros(
+    total
+  );
+
+
+  renderSuggestion(
+    total
+  );
 
 }
 
 
 
 /* ======================================================
-   MICRO
+   MICRONUTRIENTS
 ====================================================== */
 
-function renderMicros(total) {
+function renderMicros(
+  total
+) {
 
   const nutrients = [
 
     [
       "Fibre",
-      total.fibreG,
+      "fibreG",
       targets.fibre,
       "g"
     ],
 
     [
       "Calcium",
-      total.calciumMg,
+      "calciumMg",
       1000,
       "mg"
     ],
 
     [
       "Iron",
-      total.ironMg,
+      "ironMg",
       plan.sex === "female"
         ? 18
         : 8,
@@ -2744,7 +3397,7 @@ function renderMicros(total) {
 
     [
       "Magnesium",
-      total.magnesiumMg,
+      "magnesiumMg",
       plan.sex === "female"
         ? 320
         : 420,
@@ -2753,14 +3406,14 @@ function renderMicros(total) {
 
     [
       "Potassium",
-      total.potassiumMg,
+      "potassiumMg",
       3400,
       "mg"
     ],
 
     [
       "Vitamin C",
-      total.vitaminCmg,
+      "vitaminCmg",
       plan.sex === "female"
         ? 75
         : 90,
@@ -2768,8 +3421,22 @@ function renderMicros(total) {
     ],
 
     [
+      "Vitamin D",
+      "vitaminDug",
+      15,
+      "µg"
+    ],
+
+    [
+      "Vitamin B12",
+      "vitaminB12Ug",
+      2.4,
+      "µg"
+    ],
+
+    [
       "Folate",
-      total.folateUg,
+      "folateUg",
       400,
       "µg"
     ]
@@ -2779,24 +3446,31 @@ function renderMicros(total) {
 
   $("micronutrients")
     .innerHTML =
+
       nutrients.map(
-        item => {
 
-          const [
-            name,
-            value,
-            target,
-            unit
-          ] =
-            item;
+        ([
+          name,
+          key,
+          target,
+          unit
+        ]) => {
+
+          const value =
+            total[key] ||
+            0;
 
 
-          const percent =
+          const percentage =
+
             Math.min(
+
               value /
               target *
               100,
+
               100
+
             );
 
 
@@ -2829,7 +3503,7 @@ function renderMicros(total) {
 
                 <div
                   style="
-                    width:${percent}%
+                    width:${percentage}%
                   "
                 ></div>
 
@@ -2840,6 +3514,7 @@ function renderMicros(total) {
           `;
 
         }
+
       ).join("");
 
 }
@@ -2847,52 +3522,97 @@ function renderMicros(total) {
 
 
 /* ======================================================
-   SUGGESTION
+   SUGGESTIONS
 ====================================================== */
 
-function renderSuggestion(total) {
+function renderSuggestion(
+  total
+) {
 
-  const proteinLeft =
+  const proteinRemaining =
+
     Math.max(
+
       0,
+
       targets.protein -
       total.proteinG
+
     );
 
 
-  let text;
+  let message;
 
 
   if (
-    proteinLeft > 25
+    proteinRemaining >
+    30
   ) {
 
-    text = `
+    message =
 
-      You still need about
+      plan.diet ===
+      "nonveg"
 
-      <strong>
-        ${Math.round(proteinLeft)} g
-        protein
-      </strong>.
+        ? `
 
-      Try chicken, eggs, paneer,
-      tofu, soy chunks, dal,
-      chickpeas or sprouts depending
-      on your diet preference.
+          About
 
-    `;
+          <strong>
+            ${Math.round(
+              proteinRemaining
+            )} g protein
+          </strong>
+
+          remains.
+
+          Chicken, fish, eggs,
+          paneer, tofu, soy,
+          dal and sprouts are
+          available in the library.
+
+        `
+
+        : `
+
+          About
+
+          <strong>
+            ${Math.round(
+              proteinRemaining
+            )} g protein
+          </strong>
+
+          remains.
+
+          Use paneer, tofu,
+          soy, dal and sprouts
+
+          ${
+            plan.diet ===
+            "eggitarian"
+
+              ? ", or eggs"
+
+              : ""
+          }
+
+          as appropriate.
+
+        `;
 
   }
 
   else {
 
-    text = `
+    message = `
 
       Protein is close to target.
-      Use vegetables, fruit, pulses
-      and sprouts to improve fibre
-      and micronutrient variety.
+
+      Use the remaining calories
+      to improve vegetable,
+      fruit, pulse and
+      micronutrient variety.
 
     `;
 
@@ -2907,7 +3627,7 @@ function renderSuggestion(total) {
       </h3>
 
       <p>
-        ${text}
+        ${message}
       </p>
 
     `;

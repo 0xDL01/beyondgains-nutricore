@@ -1,83 +1,117 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
 
+
 :root {
-  --bg: #f3f5ef;
-  --bg-secondary: #e9eee7;
 
-  --surface: #ffffff;
-  --surface-soft: #f8f9f5;
-  --surface-green: #edf3ec;
+  --bg:
+    #f2f4ee;
 
-  --forest-950: #142b21;
-  --forest-900: #1b382b;
-  --forest-800: #234737;
-  --forest-700: #305a46;
-  --forest-600: #476c59;
+  --surface:
+    #ffffff;
 
-  --sage-600: #6e8a76;
-  --sage-500: #829989;
-  --sage-400: #9caf9f;
-  --sage-300: #bdcabe;
-  --sage-200: #d5dfd5;
-  --sage-100: #e7ede6;
+  --soft:
+    #f7f8f4;
 
-  --ivory: #faf9f4;
-  --warm: #ebe5d9;
+  --soft-green:
+    #eaf0e9;
 
-  --text: #1d2d24;
-  --text-soft: #526258;
-  --muted: #7b8980;
+  --forest:
+    #17382b;
 
-  --border: #d9e1d9;
-  --border-dark: #c5d2c7;
+  --forest-2:
+    #214a38;
 
-  --danger: #a65353;
+  --forest-3:
+    #37624d;
 
-  --shadow-sm:
-    0 7px 24px rgba(20, 43, 33, 0.055);
+  --sage:
+    #718a77;
+
+  --sage-2:
+    #9fb1a2;
+
+  --sage-3:
+    #cdd8cd;
+
+  --sage-4:
+    #e5ebe4;
+
+  --text:
+    #1b2e24;
+
+  --text-2:
+    #53645a;
+
+  --muted:
+    #7f8d84;
+
+  --border:
+    #d7e0d7;
+
+  --danger:
+    #a75050;
+
+  --amber:
+    #9a7130;
 
   --shadow:
-    0 22px 65px rgba(20, 43, 33, 0.09);
+    0 22px 65px
+    rgba(23,56,43,.08);
+
+  --shadow-sm:
+    0 8px 28px
+    rgba(23,56,43,.055);
+
 }
 
 
-/* =====================================================
+
+/* ==============================================
    RESET
-===================================================== */
+============================================== */
 
 * {
-  box-sizing: border-box;
+  box-sizing:
+    border-box;
 }
 
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior:
+    smooth;
 }
 
 
 body {
+
   margin: 0;
 
-  min-height: 100vh;
+  min-height:
+    100vh;
+
+  color:
+    var(--text);
 
   font-family:
     "Manrope",
     sans-serif;
 
-  color: var(--text);
-
   background:
+
     radial-gradient(
-      circle at 0% 0%,
-      rgba(189, 202, 190, 0.24),
-      transparent 26%
+      circle at 0 0,
+      rgba(159,177,162,.24),
+      transparent 27%
     ),
+
     radial-gradient(
       circle at 100% 12%,
-      rgba(235, 229, 217, 0.28),
+      rgba(235,228,214,.28),
       transparent 25%
     ),
+
     var(--bg);
+
 }
 
 
@@ -103,2209 +137,3309 @@ h1,
 h2,
 h3,
 h4 {
+
   font-family:
     "Cormorant Garamond",
     Georgia,
     serif;
+
 }
 
 
-/* =====================================================
+.hidden {
+  display:
+    none !important;
+}
+
+
+
+/* ==============================================
    NAV
-===================================================== */
+============================================== */
 
 .navbar {
-  width: min(1240px, 92%);
 
-  margin: auto;
+  width:
+    min(1240px,92%);
 
-  padding: 23px 0;
+  margin:
+    auto;
 
-  display: flex;
+  padding:
+    22px 0;
 
-  align-items: center;
+  display:
+    flex;
 
-  justify-content: space-between;
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
 }
 
 
 .logo {
-  display: flex;
 
-  align-items: center;
+  display:
+    flex;
 
-  gap: 11px;
+  align-items:
+    center;
+
+  gap:
+    11px;
+
 }
 
 
 .logo-mark {
-  width: 44px;
-  height: 44px;
 
-  display: flex;
+  width:
+    45px;
 
-  align-items: center;
-  justify-content: center;
+  height:
+    45px;
 
-  border-radius: 50%;
+  display:
+    flex;
 
-  color: var(--ivory);
+  align-items:
+    center;
 
-  background: var(--forest-900);
+  justify-content:
+    center;
+
+  border-radius:
+    50%;
+
+  color:
+    white;
+
+  background:
+    var(--forest);
 
   font-family:
-    "Cormorant Garamond",
-    serif;
+    "Cormorant Garamond";
 
-  font-size: 17px;
+  font-size:
+    18px;
 
-  font-weight: 700;
+  font-weight:
+    700;
+
+  box-shadow:
+    var(--shadow-sm);
+
 }
 
 
 .logo-copy {
-  display: flex;
-  flex-direction: column;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
 }
 
 
 .logo-top {
-  color: var(--sage-600);
 
-  font-size: 9px;
+  font-size:
+    9px;
 
-  font-weight: 800;
+  font-weight:
+    800;
 
-  letter-spacing: 0.2em;
+  letter-spacing:
+    .2em;
+
+  color:
+    var(--sage);
+
 }
 
 
 .logo-main {
-  color: var(--forest-950);
 
   font-family:
-    "Cormorant Garamond",
-    serif;
+    "Cormorant Garamond";
 
-  font-size: 28px;
+  font-size:
+    28px;
 
-  font-weight: 700;
+  font-weight:
+    700;
 
-  line-height: 0.95;
+  line-height:
+    .95;
+
+  color:
+    var(--forest);
+
 }
 
 
 .nav-links {
-  display: flex;
 
-  gap: 5px;
+  display:
+    flex;
 
-  padding: 5px;
+  gap:
+    5px;
 
-  border: 1px solid var(--border);
+  padding:
+    5px;
 
-  border-radius: 14px;
+  border:
+    1px solid
+    var(--border);
 
-  background: rgba(255,255,255,0.8);
+  border-radius:
+    14px;
+
+  background:
+    rgba(255,255,255,.82);
+
 }
 
 
 .nav-link {
-  padding: 9px 14px;
 
-  border-radius: 10px;
+  padding:
+    9px 14px;
 
-  color: var(--muted);
+  border-radius:
+    10px;
 
-  font-size: 12px;
+  color:
+    var(--muted);
 
-  font-weight: 650;
+  font-size:
+    12px;
 
-  transition: 0.15s ease;
+  font-weight:
+    650;
+
+  transition:
+    .15s;
+
 }
 
 
 .nav-link:hover {
-  color: var(--forest-800);
 
-  background: var(--sage-100);
+  color:
+    var(--forest);
+
+  background:
+    var(--sage-4);
+
 }
 
 
 .nav-link.active {
-  color: white;
 
-  background: var(--forest-900);
+  color:
+    #fff;
+
+  background:
+    var(--forest);
+
 }
 
 
-.nav-link:active {
-  transform: scale(0.95);
-}
 
-
-/* =====================================================
+/* ==============================================
    COMMON
-===================================================== */
+============================================== */
 
 .page {
-  width: min(1240px, 92%);
 
-  margin: auto;
+  width:
+    min(1240px,92%);
 
-  padding-bottom: 70px;
+  margin:
+    auto;
+
+  padding-bottom:
+    70px;
+
 }
 
 
 .eyebrow {
-  margin: 0;
 
-  color: var(--sage-600);
+  margin:
+    0;
 
-  font-size: 9px;
+  color:
+    var(--sage);
 
-  font-weight: 800;
+  font-size:
+    9px;
 
-  letter-spacing: 0.2em;
+  font-weight:
+    800;
+
+  letter-spacing:
+    .2em;
+
+}
+
+
+
+.primary-button,
+.secondary-button {
+
+  min-height:
+    48px;
+
+  padding:
+    12px 18px;
+
+  border-radius:
+    12px;
+
+  font-weight:
+    800;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  transition:
+    .15s;
+
 }
 
 
 .primary-button {
-  min-height: 47px;
 
-  padding: 11px 18px;
+  border:
+    1px solid
+    var(--forest);
 
-  border: 0;
+  color:
+    #fff;
 
-  border-radius: 12px;
+  background:
+    var(--forest);
 
-  color: white;
+  box-shadow:
 
-  background: var(--forest-900);
+    0 12px 28px
+    rgba(23,56,43,.16);
 
-  font-weight: 750;
-
-  transition:
-    transform 0.13s ease,
-    background 0.13s ease;
 }
 
 
 .primary-button:hover {
-  background: var(--forest-800);
 
-  transform: translateY(-2px);
+  background:
+    var(--forest-2);
+
+  transform:
+    translateY(-2px);
+
 }
 
 
-.primary-button:active {
-  transform: scale(0.96);
+.primary-button:active,
+.secondary-button:active {
+
+  transform:
+    scale(.96);
+
 }
 
 
 .secondary-button {
-  min-height: 47px;
 
-  display: inline-flex;
+  border:
+    1px solid
+    #aebfb1;
 
-  align-items: center;
-  justify-content: center;
+  color:
+    var(--forest);
 
-  padding: 11px 18px;
+  background:
+    #fff;
 
-  border: 1px solid var(--border-dark);
-
-  border-radius: 12px;
-
-  color: var(--forest-800);
-
-  background: white;
-
-  font-weight: 700;
 }
 
 
 .secondary-button:hover {
-  background: var(--sage-100);
-}
-
-
-/* =====================================================
-   INDEX HERO
-===================================================== */
-
-.home-hero {
-  min-height: 500px;
-
-  display: grid;
-
-  grid-template-columns:
-    1.3fr 0.7fr;
-
-  gap: 36px;
-
-  align-items: center;
-
-  padding: 48px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 34px;
 
   background:
+    var(--soft-green);
+
+}
+
+
+.primary-button-large {
+
+  min-width:
+    260px;
+
+}
+
+
+.diet-launch {
+
+  margin-top:
+    14px;
+
+  width:
+    max-content;
+
+}
+
+
+.calculate-row {
+
+  margin-top:
+    22px;
+
+}
+
+
+
+/* ==============================================
+   HERO
+============================================== */
+
+.home-hero,
+.diet-hero {
+
+  min-height:
+    440px;
+
+  padding:
+    48px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    34px;
+
+  background:
+
     linear-gradient(
       135deg,
-      #ffffff,
-      #f5f7f1 55%,
-      #e9efe8
+      #fff,
+      #f5f7f2 58%,
+      #e8eee7
     );
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow);
+
 }
 
 
-.home-hero h1 {
-  max-width: 750px;
+.home-hero {
 
-  margin: 8px 0 18px;
+  display:
+    grid;
 
-  color: var(--forest-950);
+  grid-template-columns:
+    1.25fr .75fr;
+
+  gap:
+    36px;
+
+  align-items:
+    center;
+
+}
+
+
+.home-hero h1,
+.diet-hero h1 {
+
+  margin:
+    8px 0 17px;
+
+  color:
+    var(--forest);
 
   font-size:
-    clamp(51px, 6vw, 80px);
+    clamp(
+      52px,
+      6vw,
+      82px
+    );
 
-  font-weight: 600;
+  line-height:
+    .92;
 
-  line-height: 0.93;
+  font-weight:
+    600;
 
-  letter-spacing: -0.035em;
+  letter-spacing:
+    -.035em;
+
 }
 
 
-.home-hero h1 span {
-  color: var(--sage-600);
+.home-hero h1 span,
+.diet-hero h1 span {
+
+  color:
+    var(--sage);
+
 }
 
 
-.home-hero p:not(.eyebrow) {
-  max-width: 650px;
+.hero-description,
+.diet-hero p:not(.eyebrow) {
 
-  color: var(--text-soft);
+  max-width:
+    650px;
 
-  font-size: 14px;
+  color:
+    var(--text-2);
 
-  line-height: 1.75;
+  font-size:
+    14px;
+
+  line-height:
+    1.75;
+
 }
 
 
 .hero-actions {
-  display: flex;
 
-  flex-wrap: wrap;
+  display:
+    flex;
 
-  gap: 9px;
+  gap:
+    10px;
 
-  margin-top: 24px;
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    25px;
+
 }
 
 
-.hero-summary {
-  padding: 25px;
 
-  border: 1px solid var(--border-dark);
+/* ==============================================
+   HERO PLAN CARD
+============================================== */
 
-  border-radius: 25px;
+.hero-plan-card {
 
-  background: white;
+  padding:
+    26px;
 
-  box-shadow: var(--shadow-sm);
+  border:
+    1px solid
+    #bdcbbf;
+
+  border-radius:
+    26px;
+
+  background:
+    #fff;
+
+  box-shadow:
+    var(--shadow-sm);
+
 }
 
 
-.hero-big-number {
+.hero-calorie {
+
   margin:
-    8px 0 18px;
+    10px 0 20px;
 
-  color: var(--forest-900);
-
-  font-family:
-    "Cormorant Garamond",
-    serif;
-
-  font-size: 58px;
-
-  font-weight: 600;
 }
 
 
-.hero-big-number small {
+.hero-calorie strong {
+
   font-family:
-    "Manrope",
-    sans-serif;
+    "Cormorant Garamond";
 
-  color: var(--muted);
+  font-size:
+    62px;
 
-  font-size: 11px;
+  color:
+    var(--forest);
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    -.04em;
+
 }
 
 
-.hero-mini-grid {
-  display: grid;
+.hero-calorie span {
+
+  display:
+    block;
+
+  color:
+    var(--muted);
+
+  font-size:
+    10px;
+
+}
+
+
+.hero-metric-grid {
+
+  display:
+    grid;
 
   grid-template-columns:
-    repeat(2, 1fr);
+    repeat(2,1fr);
 
-  gap: 8px;
+  gap:
+    8px;
+
 }
 
 
-.hero-mini-card {
-  padding: 12px;
+.hero-metric {
 
-  border-radius: 12px;
+  padding:
+    13px;
 
-  background: var(--surface-green);
+  border-radius:
+    12px;
+
+  background:
+    #edf2ec;
+
+  border:
+    1px solid
+    #e0e7e0;
+
 }
 
 
-.hero-mini-card span {
-  display: block;
+.hero-metric span {
 
-  color: var(--muted);
+  display:
+    block;
 
-  font-size: 9px;
+  color:
+    var(--muted);
+
+  font-size:
+    9px;
+
 }
 
 
-.hero-mini-card strong {
-  display: block;
+.hero-metric strong {
 
-  margin-top: 3px;
+  display:
+    block;
 
-  color: var(--forest-900);
+  margin-top:
+    3px;
 
-  font-size: 16px;
+  color:
+    var(--forest);
+
+  font-size:
+    17px;
+
 }
 
 
-/* =====================================================
-   INDEX SECTIONS
-===================================================== */
 
-.calculator-section {
-  margin-top: 18px;
+/* ==============================================
+   PANELS
+============================================== */
 
-  padding: 29px;
+.panel,
+.quick-section,
+.food-browser,
+.meal-panel,
+.data-note {
 
-  border: 1px solid var(--border);
+  margin-top:
+    18px;
 
-  border-radius: 28px;
+  padding:
+    28px;
 
-  background: rgba(255,255,255,0.92);
+  border:
+    1px solid
+    var(--border);
 
-  box-shadow: var(--shadow-sm);
+  border-radius:
+    28px;
+
+  background:
+    rgba(255,255,255,.94);
+
+  box-shadow:
+    var(--shadow-sm);
+
 }
 
 
-.section-title h2 {
+.section-heading,
+.food-browser-head,
+.meal-panel-head {
+
+  display:
+    flex;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    space-between;
+
+  gap:
+    18px;
+
+  margin-bottom:
+    20px;
+
+}
+
+
+.section-heading h2,
+.food-browser h2,
+.meal-panel h2 {
+
   margin:
     3px 0 0;
 
-  color: var(--forest-950);
+  color:
+    var(--forest);
 
-  font-size: 35px;
+  font-size:
+    34px;
 
-  font-weight: 600;
+  font-weight:
+    600;
+
 }
 
 
-.goal-grid {
-  display: grid;
+.section-heading > p {
+
+  max-width:
+    420px;
+
+  margin:
+    0;
+
+  color:
+    var(--muted);
+
+  font-size:
+    10px;
+
+  line-height:
+    1.5;
+
+}
+
+
+
+/* ==============================================
+   GOAL CARDS
+============================================== */
+
+.goal-grid,
+.diet-choice-grid {
+
+  display:
+    grid;
 
   grid-template-columns:
-    repeat(4, 1fr);
+    repeat(4,1fr);
 
-  gap: 10px;
+  gap:
+    10px;
 
-  margin-top: 20px;
 }
 
 
-.goal-card {
-  position: relative;
+.goal-card,
+.diet-choice {
 
-  min-height: 145px;
+  position:
+    relative;
 
-  padding: 17px;
+  padding:
+    17px;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    #cbd7cd;
 
-  border-radius: 16px;
-
-  background: var(--surface-soft);
-
-  cursor: pointer;
-
-  transition: 0.15s ease;
-}
-
-
-.goal-card:hover {
-  transform: translateY(-3px);
-
-  border-color: var(--sage-300);
-
-  background: var(--surface-green);
-}
-
-
-.goal-card:active {
-  transform: scale(0.97);
-}
-
-
-.goal-card input {
-  position: absolute;
-
-  opacity: 0;
-}
-
-
-.goal-card:has(input:checked) {
-  border-color: var(--forest-700);
+  border-radius:
+    16px;
 
   background:
-    linear-gradient(
-      145deg,
-      white,
-      var(--surface-green)
-    );
+    #f6f8f4;
+
+  cursor:
+    pointer;
+
+  transition:
+    .15s;
+
+  min-height:
+    145px;
+
+}
+
+
+.diet-choice {
+
+  min-height:
+    105px;
+
+}
+
+
+.goal-card:hover,
+.diet-choice:hover {
+
+  transform:
+    translateY(-3px);
+
+  border-color:
+    #8fa795;
+
+  background:
+    #eaf0e9;
+
+  box-shadow:
+    var(--shadow-sm);
+
+}
+
+
+.goal-card input,
+.diet-choice input {
+
+  position:
+    absolute;
+
+  opacity:
+    0;
+
+}
+
+
+.goal-card:has(input:checked),
+.diet-choice:has(input:checked) {
+
+  border:
+    2px solid
+    var(--forest-3);
+
+  background:
+    #e8efe8;
+
 }
 
 
 .goal-icon {
-  width: 36px;
-  height: 36px;
 
-  display: flex;
+  width:
+    38px;
 
-  align-items: center;
-  justify-content: center;
+  height:
+    38px;
 
-  margin-bottom: 18px;
+  display:
+    flex;
 
-  border-radius: 50%;
+  align-items:
+    center;
 
-  color: var(--forest-800);
+  justify-content:
+    center;
 
-  background: var(--sage-100);
+  border-radius:
+    50%;
 
-  font-weight: 800;
+  background:
+    #dfe8df;
+
+  color:
+    var(--forest);
+
+  font-weight:
+    800;
+
+  margin-bottom:
+    18px;
+
 }
 
 
-.goal-card strong {
-  display: block;
+.goal-card strong,
+.diet-choice strong {
 
-  color: var(--forest-950);
+  display:
+    block;
 
-  font-size: 12px;
+  color:
+    var(--forest);
+
+  font-size:
+    12px;
+
 }
 
 
-.goal-card span {
-  display: block;
+.goal-card small,
+.diet-choice small {
 
-  margin-top: 6px;
+  display:
+    block;
 
-  color: var(--muted);
+  margin-top:
+    5px;
 
-  font-size: 10px;
+  color:
+    #697970;
 
-  line-height: 1.5;
+  font-size:
+    10px;
+
+  line-height:
+    1.5;
+
 }
 
 
-/* =====================================================
-   INDEX FORM
-===================================================== */
+
+/* ==============================================
+   FORM
+============================================== */
 
 .form-grid {
-  display: grid;
+
+  display:
+    grid;
 
   grid-template-columns:
-    repeat(3, 1fr);
+    repeat(3,1fr);
 
-  gap: 12px;
+  gap:
+    12px;
 
-  margin-top: 20px;
 }
 
 
 .form-field {
-  display: block;
 
-  padding: 13px;
+  padding:
+    13px;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    #cbd6cc;
 
-  border-radius: 14px;
+  border-radius:
+    14px;
 
-  background: var(--surface-soft);
+  background:
+    #eef2eb;
+
 }
 
 
 .form-field > span {
-  display: block;
 
-  margin-bottom: 7px;
+  display:
+    block;
 
-  color: var(--forest-800);
+  margin-bottom:
+    7px;
 
-  font-size: 10px;
+  color:
+    var(--forest);
 
-  font-weight: 750;
+  font-size:
+    10px;
+
+  font-weight:
+    800;
+
 }
 
-
-/*
-IMPORTANT:
-These styles fix the "white textbox disappears"
-problem on index.html.
-*/
 
 .form-field input,
 .form-field select,
-.search-shell input,
-.calculator-option-group input {
-  width: 100%;
+.search-shell input {
 
-  min-height: 45px;
+  width:
+    100%;
 
-  padding: 11px 12px;
+  min-height:
+    46px;
+
+  padding:
+    11px 13px;
 
   border:
-    1px solid var(--border-dark);
+    1px solid
+    #9fb2a4;
 
-  border-radius: 10px;
+  border-radius:
+    10px;
 
-  outline: none;
+  outline:
+    none;
 
-  color: var(--forest-950);
+  background:
+    #e5ece4;
 
-  background: #eef2eb;
+  color:
+    #15271e;
 
-  font-weight: 600;
+  font-weight:
+    700;
 
-  caret-color: var(--forest-900);
+  box-shadow:
 
-  transition:
-    border 0.15s ease,
-    background 0.15s ease,
-    box-shadow 0.15s ease;
-}
+    inset 0 1px 2px
+    rgba(23,56,43,.04);
 
-
-.form-field input::placeholder,
-.search-shell input::placeholder {
-  color: #919b94;
 }
 
 
 .form-field input:focus,
 .form-field select:focus,
 .search-shell input:focus {
-  border-color: var(--forest-600);
 
-  background: #ffffff;
+  border-color:
+    var(--forest-3);
+
+  background:
+    #fff;
 
   box-shadow:
+
     0 0 0 4px
-    rgba(71,108,89,0.09);
+    rgba(55,98,77,.1);
+
+}
+
+
+.form-field input::placeholder,
+.search-shell input::placeholder {
+
+  color:
+    #7a897f;
+
 }
 
 
 .form-field select option {
-  color: var(--text);
 
-  background: white;
+  color:
+    #15271e;
+
+  background:
+    #fff;
+
 }
 
 
-.diet-choice-grid {
-  display: grid;
 
-  grid-template-columns:
-    repeat(4, 1fr);
-
-  gap: 10px;
-
-  margin-top: 19px;
-}
-
-
-.diet-choice {
-  position: relative;
-
-  padding: 15px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 14px;
-
-  background: var(--surface-soft);
-
-  cursor: pointer;
-
-  transition: 0.15s ease;
-}
-
-
-.diet-choice:hover {
-  background: var(--surface-green);
-}
-
-
-.diet-choice input {
-  position: absolute;
-
-  opacity: 0;
-}
-
-
-.diet-choice:has(input:checked) {
-  border-color: var(--forest-700);
-
-  background: var(--sage-100);
-}
-
-
-.diet-choice strong {
-  display: block;
-
-  color: var(--forest-900);
-
-  font-size: 11px;
-}
-
-
-.diet-choice small {
-  display: block;
-
-  margin-top: 4px;
-
-  color: var(--muted);
-
-  font-size: 9px;
-}
-
-
-/* =====================================================
-   RESULT CARDS
-===================================================== */
+/* ==============================================
+   RESULTS
+============================================== */
 
 .results-grid {
-  display: grid;
+
+  display:
+    grid;
 
   grid-template-columns:
-    repeat(4, 1fr);
+    repeat(4,1fr);
 
-  gap: 9px;
+  gap:
+    9px;
 
-  margin-top: 20px;
+  margin-top:
+    20px;
+
 }
 
 
 .result-card {
-  padding: 15px;
 
-  border: 1px solid var(--border);
+  padding:
+    16px;
 
-  border-radius: 14px;
+  border:
+    1px solid
+    #cbd7cd;
 
-  background: var(--surface-soft);
+  border-radius:
+    14px;
+
+  background:
+    #f5f7f3;
+
 }
 
 
-.result-card.highlight {
-  background: var(--surface-green);
+.result-card.featured {
 
-  border-color: var(--sage-300);
+  background:
+    #e8efe8;
+
+  border-color:
+    #a8bba9;
+
 }
 
 
 .result-card span {
-  color: var(--muted);
 
-  font-size: 9px;
+  display:
+    block;
+
+  color:
+    var(--muted);
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
 }
 
 
 .result-card strong {
-  display: block;
 
-  margin-top: 4px;
+  display:
+    block;
 
-  color: var(--forest-900);
+  margin-top:
+    5px;
 
-  font-size: 24px;
+  color:
+    var(--forest);
+
+  font-size:
+    26px;
+
 }
 
 
-.hidden {
-  display: none !important;
-}
 
-
-/* =====================================================
+/* ==============================================
    DIET HERO
-===================================================== */
+============================================== */
 
 .diet-hero {
-  min-height: 365px;
 
-  display: grid;
+  display:
+    grid;
 
   grid-template-columns:
-    1.35fr 0.65fr;
+    1.35fr .65fr;
 
-  gap: 40px;
+  gap:
+    40px;
 
-  align-items: center;
+  align-items:
+    center;
 
-  padding: 47px;
+  min-height:
+    360px;
 
-  border: 1px solid var(--border);
-
-  border-radius: 34px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff,
-      #f7f8f3 55%,
-      #e9efe8
-    );
-
-  box-shadow: var(--shadow);
 }
 
 
 .diet-hero h1 {
-  margin:
-    7px 0 15px;
-
-  color: var(--forest-950);
 
   font-size:
-    clamp(50px, 6vw, 77px);
+    clamp(
+      50px,
+      6vw,
+      76px
+    );
 
-  font-weight: 600;
-
-  line-height: 0.93;
-
-  letter-spacing: -0.035em;
-}
-
-
-.diet-hero h1 span {
-  color: var(--sage-600);
-}
-
-
-.diet-hero p:not(.eyebrow) {
-  max-width: 640px;
-
-  color: var(--text-soft);
-
-  font-size: 13px;
-
-  line-height: 1.7;
 }
 
 
 .diet-badges {
-  display: flex;
 
-  flex-wrap: wrap;
+  display:
+    flex;
 
-  gap: 7px;
+  flex-wrap:
+    wrap;
 
-  margin-top: 21px;
+  gap:
+    7px;
+
+  margin-top:
+    20px;
+
 }
 
 
 .diet-badges span {
+
   padding:
     8px 11px;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    #cad6cb;
 
-  border-radius: 999px;
+  border-radius:
+    999px;
 
-  color: var(--forest-700);
+  background:
+    #fafbf7;
 
-  background: var(--ivory);
+  color:
+    var(--forest-3);
 
-  font-size: 9px;
+  font-size:
+    9px;
 
-  font-weight: 650;
+  font-weight:
+    700;
+
 }
 
 
 .target-orbit {
-  display: flex;
 
-  justify-content: center;
+  display:
+    flex;
+
+  justify-content:
+    center;
+
 }
 
 
 .target-ring {
-  width: 215px;
-  height: 215px;
 
-  display: flex;
+  width:
+    210px;
 
-  flex-direction: column;
+  height:
+    210px;
 
-  align-items: center;
-  justify-content: center;
+  display:
+    flex;
 
-  border: 1px solid var(--border-dark);
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    1px solid
+    #afc0b2;
 
   outline:
-    11px solid var(--sage-100);
+    11px solid
+    #e2e9e1;
 
-  border-radius: 50%;
+  border-radius:
+    50%;
 
-  background: white;
+  background:
+    #fff;
 
-  box-shadow: var(--shadow-sm);
+  box-shadow:
+    var(--shadow-sm);
+
 }
 
 
-.target-ring span {
-  color: var(--muted);
+.target-ring span,
+.target-ring small {
 
-  font-size: 9px;
+  color:
+    var(--muted);
+
+  font-size:
+    9px;
+
 }
 
 
 .target-ring strong {
-  margin-top: 3px;
-
-  color: var(--forest-900);
 
   font-family:
-    "Cormorant Garamond",
-    serif;
+    "Cormorant Garamond";
 
-  font-size: 47px;
+  font-size:
+    48px;
 
-  font-weight: 600;
+  color:
+    var(--forest);
+
+  font-weight:
+    600;
+
 }
 
 
-.target-ring small {
-  color: var(--muted);
 
-  font-size: 9px;
-}
-
-
-/* =====================================================
-   DIET DASHBOARD
-===================================================== */
+/* ==============================================
+   DASHBOARD
+============================================== */
 
 .dashboard-grid {
-  display: grid;
+
+  display:
+    grid;
 
   grid-template-columns:
-    repeat(4, 1fr);
+    repeat(4,1fr);
 
-  gap: 10px;
+  gap:
+    10px;
 
-  margin-top: 17px;
+  margin-top:
+    17px;
+
 }
 
 
 .dashboard-card {
-  display: flex;
 
-  align-items: center;
+  display:
+    flex;
 
-  gap: 12px;
+  align-items:
+    center;
 
-  padding: 17px;
+  gap:
+    12px;
 
-  border: 1px solid var(--border);
+  padding:
+    17px;
 
-  border-radius: 16px;
+  border:
+    1px solid
+    var(--border);
 
-  background: white;
+  border-radius:
+    16px;
 
-  box-shadow: var(--shadow-sm);
+  background:
+    #fff;
+
+  box-shadow:
+    var(--shadow-sm);
+
+}
+
+
+.featured-dashboard {
+
+  background:
+    #eaf0e9;
+
 }
 
 
 .dashboard-icon {
-  width: 39px;
-  height: 39px;
 
-  display: flex;
+  width:
+    40px;
 
-  align-items: center;
-  justify-content: center;
+  height:
+    40px;
 
-  flex-shrink: 0;
+  display:
+    flex;
 
-  border-radius: 50%;
+  align-items:
+    center;
 
-  color: var(--forest-800);
+  justify-content:
+    center;
 
-  background: var(--sage-100);
+  flex-shrink:
+    0;
 
-  font-size: 9px;
+  border-radius:
+    50%;
 
-  font-weight: 800;
+  background:
+    #e0e8e0;
+
+  color:
+    var(--forest);
+
+  font-size:
+    9px;
+
+  font-weight:
+    800;
+
 }
 
 
-.dashboard-card span {
-  display: block;
+.dashboard-card span:not(.dashboard-icon) {
 
-  color: var(--muted);
+  display:
+    block;
 
-  font-size: 8px;
+  color:
+    var(--muted);
 
-  font-weight: 700;
+  font-size:
+    8px;
+
+  font-weight:
+    700;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    .05em;
+
 }
 
 
 .dashboard-card strong {
-  display: block;
 
-  margin-top: 3px;
+  display:
+    block;
 
-  color: var(--forest-950);
+  margin-top:
+    3px;
 
-  font-size: 21px;
+  color:
+    var(--forest);
+
+  font-size:
+    22px;
+
 }
 
 
 .dashboard-card small {
-  color: var(--muted);
 
-  font-size: 8px;
+  color:
+    var(--muted);
+
+  font-size:
+    8px;
+
 }
 
 
-/* =====================================================
-   QUICK
-===================================================== */
 
-.quick-section {
-  margin-top: 18px;
-
-  padding: 27px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 28px;
-
-  background: white;
-
-  box-shadow: var(--shadow-sm);
-}
-
-
-.section-heading {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: flex-end;
-
-  gap: 20px;
-
-  margin-bottom: 19px;
-}
-
-
-.section-heading h2 {
-  margin: 3px 0 0;
-
-  color: var(--forest-950);
-
-  font-size: 34px;
-
-  font-weight: 600;
-}
-
-
-.section-heading > p {
-  max-width: 400px;
-
-  margin: 0;
-
-  color: var(--muted);
-
-  font-size: 10px;
-}
-
+/* ==============================================
+   QUICK FOOD
+============================================== */
 
 .quick-food-grid {
-  display: grid;
+
+  display:
+    grid;
 
   grid-template-columns:
-    repeat(6, 1fr);
+    repeat(6,1fr);
 
-  gap: 8px;
+  gap:
+    8px;
+
 }
 
 
 .quick-food-card {
-  position: relative;
 
-  min-height: 105px;
+  position:
+    relative;
 
-  padding: 13px;
+  min-height:
+    112px;
 
-  text-align: left;
+  padding:
+    14px;
 
-  border: 1px solid var(--border);
+  text-align:
+    left;
 
-  border-radius: 14px;
+  border:
+    1px solid
+    #ccd7cd;
 
-  background: var(--surface-soft);
+  border-radius:
+    15px;
 
-  transition: 0.13s ease;
+  background:
+    #f6f8f4;
+
+  transition:
+    .14s;
+
 }
 
 
 .quick-food-card:hover {
-  transform: translateY(-2px);
 
-  background: var(--surface-green);
+  transform:
+    translateY(-2px);
 
-  border-color: var(--sage-300);
+  border-color:
+    #94a996;
+
+  background:
+    #eaf0e9;
+
 }
 
 
 .quick-food-card strong {
-  display: block;
 
-  color: var(--forest-900);
+  display:
+    block;
 
-  font-size: 11px;
+  color:
+    var(--forest);
+
+  font-size:
+    11px;
+
 }
 
 
 .quick-food-card span {
-  display: block;
 
-  margin-top: 4px;
+  display:
+    block;
 
-  color: var(--muted);
+  margin-top:
+    5px;
 
-  font-size: 8px;
+  color:
+    var(--muted);
+
+  font-size:
+    8px;
+
+  line-height:
+    1.45;
+
 }
 
 
 .quick-plus {
-  position: absolute;
 
-  right: 9px;
-  bottom: 9px;
+  position:
+    absolute;
 
-  width: 25px;
-  height: 25px;
+  right:
+    10px;
 
-  display: flex !important;
+  bottom:
+    10px;
 
-  align-items: center;
-  justify-content: center;
+  width:
+    26px;
 
-  border-radius: 50%;
+  height:
+    26px;
 
-  color: white !important;
+  display:
+    flex !important;
 
-  background: var(--forest-900);
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border-radius:
+    50%;
+
+  color:
+    #fff !important;
+
+  background:
+    var(--forest);
+
+  font-size:
+    15px !important;
+
 }
 
 
-/* =====================================================
-   FOOD AREA
-===================================================== */
+
+/* ==============================================
+   FOOD LAYOUT
+============================================== */
 
 .food-layout {
-  display: grid;
+
+  display:
+    grid;
 
   grid-template-columns:
-    0.92fr 1.08fr;
+    .95fr 1.05fr;
 
-  gap: 15px;
+  gap:
+    15px;
 
-  margin-top: 18px;
+  margin-top:
+    18px;
+
 }
 
 
 .food-browser,
 .meal-panel {
-  padding: 22px;
 
-  border: 1px solid var(--border);
+  margin-top:
+    0;
 
-  border-radius: 27px;
+  padding:
+    22px;
 
-  background: white;
-
-  box-shadow: var(--shadow-sm);
 }
 
 
 .food-browser-head,
 .meal-panel-head {
-  display: flex;
 
-  justify-content: space-between;
+  align-items:
+    flex-start;
 
-  align-items: flex-start;
+  margin-bottom:
+    15px;
 
-  gap: 15px;
-
-  margin-bottom: 15px;
-}
-
-
-.food-browser h2,
-.meal-panel h2 {
-  margin: 3px 0 0;
-
-  color: var(--forest-950);
-
-  font-size: 31px;
-
-  font-weight: 600;
 }
 
 
 .food-count {
+
   padding:
     7px 10px;
 
-  border-radius: 999px;
+  border-radius:
+    999px;
 
-  color: var(--forest-700);
+  background:
+    #e3ebe3;
 
-  background: var(--sage-100);
+  color:
+    var(--forest-3);
 
-  font-size: 8px;
+  font-size:
+    8px;
 
-  font-weight: 700;
+  font-weight:
+    800;
+
 }
 
 
 .search-shell {
-  position: relative;
+
+  position:
+    relative;
+
 }
 
 
 .search-symbol {
-  position: absolute;
 
-  left: 13px;
-  top: 50%;
+  position:
+    absolute;
 
-  transform: translateY(-50%);
+  left:
+    13px;
 
-  color: var(--sage-600);
+  top:
+    50%;
+
+  transform:
+    translateY(-50%);
+
+  color:
+    var(--sage);
+
 }
 
 
 .search-shell input {
-  padding-left: 39px;
+
+  padding-left:
+    40px;
+
 }
 
 
-/* =====================================================
+
+/* ==============================================
    FILTERS
-===================================================== */
+============================================== */
 
 .filter-row {
-  display: flex;
 
-  gap: 6px;
+  display:
+    flex;
 
-  overflow-x: auto;
+  gap:
+    6px;
 
-  padding: 11px 0;
+  overflow-x:
+    auto;
+
+  padding:
+    11px 0;
+
 }
 
 
 .filter-button {
-  flex-shrink: 0;
+
+  flex-shrink:
+    0;
 
   padding:
     8px 11px;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    #cbd6cc;
 
-  border-radius: 999px;
+  border-radius:
+    999px;
 
-  color: var(--muted);
+  color:
+    var(--muted);
 
-  background: white;
+  background:
+    #fff;
 
-  font-size: 9px;
+  font-size:
+    9px;
 
-  font-weight: 650;
+  font-weight:
+    700;
+
 }
 
 
 .filter-button:hover {
-  background: var(--sage-100);
 
-  color: var(--forest-800);
+  background:
+    #e9efea;
+
+  color:
+    var(--forest);
+
 }
 
 
 .filter-button.active {
-  color: white;
 
-  border-color: var(--forest-900);
+  color:
+    #fff;
 
-  background: var(--forest-900);
+  border-color:
+    var(--forest);
+
+  background:
+    var(--forest);
+
 }
 
 
-/* =====================================================
+
+/* ==============================================
    FOOD LIST
-===================================================== */
+============================================== */
 
 .food-list {
-  display: grid;
 
-  gap: 7px;
+  display:
+    grid;
 
-  max-height: 680px;
+  gap:
+    7px;
 
-  overflow-y: auto;
+  max-height:
+    700px;
+
+  overflow-y:
+    auto;
+
+  padding-right:
+    3px;
+
 }
 
 
 .food-item {
-  display: grid;
+
+  display:
+    grid;
 
   grid-template-columns:
     1fr auto;
 
-  align-items: center;
+  gap:
+    10px;
 
-  gap: 10px;
+  align-items:
+    center;
 
-  padding: 12px;
+  padding:
+    12px;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    #cfd9d0;
 
-  border-radius: 12px;
+  border-radius:
+    12px;
 
-  background: var(--surface-soft);
+  background:
+    #f7f8f5;
 
-  transition: 0.13s ease;
+  transition:
+    .13s;
+
 }
 
 
 .food-item:hover {
-  transform: translateX(2px);
 
-  border-color: var(--sage-300);
+  transform:
+    translateX(2px);
 
-  background: var(--surface-green);
+  border-color:
+    #97aa99;
+
+  background:
+    #edf2ec;
+
 }
 
 
 .food-name strong {
-  display: block;
 
-  color: var(--forest-950);
+  display:
+    block;
 
-  font-size: 11px;
+  color:
+    var(--forest);
+
+  font-size:
+    11px;
+
 }
 
 
 .food-name span {
-  display: block;
 
-  margin-top: 3px;
+  display:
+    block;
 
-  color: var(--muted);
+  margin-top:
+    3px;
 
-  font-size: 8px;
+  color:
+    var(--muted);
+
+  font-size:
+    8px;
+
+  line-height:
+    1.5;
+
+}
+
+
+.food-badges {
+
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    4px;
+
+  margin-top:
+    6px;
+
+}
+
+
+.mini-badge {
+
+  display:
+    inline-flex !important;
+
+  width:
+    max-content;
+
+  padding:
+    3px 6px;
+
+  border-radius:
+    999px;
+
+  font-size:
+    7px !important;
+
+  font-weight:
+    700;
+
+}
+
+
+.verified {
+
+  background:
+    #dfeadf;
+
+  color:
+    #315a46 !important;
+
+}
+
+
+.pending {
+
+  background:
+    #f3ebdc;
+
+  color:
+    #8b6428 !important;
+
+}
+
+
+.pune {
+
+  background:
+    #e6e9f2;
+
+  color:
+    #505d82 !important;
+
 }
 
 
 .food-add {
-  width: 36px;
-  height: 36px;
 
-  border: 0;
+  width:
+    36px;
 
-  border-radius: 50%;
+  height:
+    36px;
 
-  color: white;
+  border:
+    0;
 
-  background: var(--forest-900);
+  border-radius:
+    50%;
 
-  font-size: 16px;
+  color:
+    #fff;
+
+  background:
+    var(--forest);
+
+  font-size:
+    16px;
+
 }
 
 
 .food-add:active {
-  transform: scale(0.85);
+
+  transform:
+    scale(.85);
+
 }
 
 
-/* =====================================================
+
+/* ==============================================
    MEAL
-===================================================== */
+============================================== */
 
 .clear-button {
+
   padding:
-    7px 10px;
+    8px 10px;
 
-  border: 1px solid #eadada;
+  border:
+    1px solid
+    #e5d6d6;
 
-  border-radius: 9px;
+  border-radius:
+    9px;
 
-  color: var(--danger);
+  color:
+    var(--danger);
 
-  background: #fffafa;
+  background:
+    #fffafa;
 
-  font-size: 9px;
+  font-size:
+    9px;
 
-  font-weight: 700;
+  font-weight:
+    700;
+
 }
 
 
 .meal-items {
-  display: grid;
 
-  gap: 7px;
+  display:
+    grid;
+
+  gap:
+    7px;
+
 }
 
 
 .empty-state {
-  padding: 40px 20px;
+
+  padding:
+    40px 20px;
 
   border:
-    1px dashed var(--border-dark);
+    1px dashed
+    #b7c7b9;
 
-  border-radius: 14px;
+  border-radius:
+    14px;
 
-  color: var(--muted);
+  color:
+    var(--muted);
 
-  background: var(--surface-soft);
+  background:
+    #f7f8f5;
 
-  text-align: center;
+  text-align:
+    center;
 
-  font-size: 10px;
+  font-size:
+    10px;
 
-  line-height: 1.6;
+  line-height:
+    1.6;
+
 }
 
 
 .meal-item {
-  display: grid;
+
+  display:
+    grid;
 
   grid-template-columns:
     1fr auto;
 
-  gap: 8px;
+  gap:
+    8px;
 
-  align-items: center;
+  align-items:
+    center;
 
-  padding: 10px;
+  padding:
+    11px;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    #d1dad2;
 
-  border-radius: 11px;
+  border-radius:
+    11px;
 
-  background: var(--surface-soft);
+  background:
+    #f7f8f5;
+
 }
 
 
 .meal-item-name strong {
-  display: block;
 
-  color: var(--forest-950);
+  display:
+    block;
 
-  font-size: 10px;
+  color:
+    var(--forest);
+
+  font-size:
+    10px;
+
 }
 
 
 .meal-item-name span {
-  display: block;
 
-  margin-top: 3px;
+  display:
+    block;
 
-  color: var(--muted);
+  margin-top:
+    3px;
 
-  font-size: 8px;
+  color:
+    var(--muted);
+
+  font-size:
+    8px;
+
 }
 
 
 .remove-food {
-  width: 31px;
-  height: 31px;
 
-  border: 0;
+  width:
+    31px;
 
-  border-radius: 50%;
+  height:
+    31px;
 
-  color: var(--danger);
+  border:
+    0;
 
-  background: #f8eeee;
+  border-radius:
+    50%;
+
+  color:
+    var(--danger);
+
+  background:
+    #f8eeee;
+
 }
 
 
-/* =====================================================
+
+/* ==============================================
    TOTALS
-===================================================== */
+============================================== */
 
 .meal-total-grid {
-  display: grid;
+
+  display:
+    grid;
 
   grid-template-columns:
-    repeat(4, 1fr);
+    repeat(4,1fr);
 
-  gap: 7px;
+  gap:
+    7px;
 
-  margin-top: 14px;
+  margin-top:
+    14px;
+
 }
 
 
 .meal-total {
-  padding: 11px;
 
-  border: 1px solid var(--border);
+  padding:
+    11px;
 
-  border-radius: 11px;
+  border:
+    1px solid
+    #d3ddd4;
 
-  background: var(--surface-soft);
+  border-radius:
+    11px;
+
+  background:
+    #f6f8f4;
+
+}
+
+
+.protein-total {
+
+  background:
+    #e8efe8;
+
 }
 
 
 .meal-total span {
-  color: var(--muted);
 
-  font-size: 7px;
+  color:
+    var(--muted);
 
-  font-weight: 700;
+  font-size:
+    7px;
+
+  font-weight:
+    800;
+
 }
 
 
 .meal-total strong {
-  display: block;
 
-  margin-top: 3px;
+  display:
+    block;
 
-  color: var(--forest-950);
+  margin-top:
+    3px;
 
-  font-size: 13px;
+  color:
+    var(--forest);
+
+  font-size:
+    13px;
+
 }
 
 
-/* =====================================================
+
+/* ==============================================
    PROGRESS
-===================================================== */
+============================================== */
 
 .progress-card {
-  margin-top: 12px;
 
-  padding: 13px;
+  margin-top:
+    12px;
 
-  border: 1px solid var(--border);
+  padding:
+    13px;
 
-  border-radius: 12px;
+  border:
+    1px solid
+    #d2dcd3;
 
-  background: var(--surface-soft);
+  border-radius:
+    12px;
+
+  background:
+    #f7f8f5;
+
 }
 
 
 .progress-label {
-  display: flex;
 
-  justify-content: space-between;
+  display:
+    flex;
 
-  gap: 10px;
+  justify-content:
+    space-between;
+
+  gap:
+    10px;
+
 }
 
 
 .progress-label span {
-  color: var(--forest-950);
 
-  font-size: 10px;
+  color:
+    var(--forest);
 
-  font-weight: 700;
+  font-size:
+    10px;
+
+  font-weight:
+    800;
+
 }
 
 
 .progress-label small {
-  display: block;
 
-  margin-top: 2px;
+  display:
+    block;
 
-  color: var(--muted);
+  margin-top:
+    2px;
 
-  font-size: 7px;
+  color:
+    var(--muted);
+
+  font-size:
+    7px;
+
 }
 
 
 .progress-label strong {
-  color: var(--forest-700);
 
-  font-size: 10px;
+  color:
+    var(--forest-3);
+
+  font-size:
+    10px;
+
 }
 
 
 .progress-track {
-  height: 6px;
 
-  margin-top: 8px;
+  height:
+    6px;
 
-  overflow: hidden;
+  margin-top:
+    8px;
 
-  border-radius: 999px;
+  overflow:
+    hidden;
 
-  background: var(--sage-100);
+  border-radius:
+    999px;
+
+  background:
+    #e0e8e0;
+
 }
 
 
 .progress-bar {
-  height: 100%;
 
-  border-radius: inherit;
+  height:
+    100%;
+
+  width:
+    0;
+
+  border-radius:
+    inherit;
 
   background:
+
     linear-gradient(
       90deg,
-      var(--forest-900),
-      var(--sage-400)
+      var(--forest),
+      #879f8b
     );
+
+  transition:
+    width .3s;
+
 }
 
 
-/* =====================================================
+
+/* ==============================================
    MICROS
-===================================================== */
+============================================== */
 
 .micro-heading {
-  margin-top: 22px;
+
+  margin-top:
+    22px;
+
 }
 
 
 .micro-heading h3 {
-  margin: 3px 0 0;
 
-  color: var(--forest-950);
+  margin:
+    3px 0 0;
 
-  font-size: 24px;
+  color:
+    var(--forest);
 
-  font-weight: 600;
+  font-size:
+    24px;
+
+  font-weight:
+    600;
+
 }
 
 
 .micronutrient-grid {
-  display: grid;
+
+  display:
+    grid;
 
   grid-template-columns:
-    repeat(2, 1fr);
+    repeat(2,1fr);
 
-  gap: 7px;
+  gap:
+    7px;
 
-  margin-top: 11px;
+  margin-top:
+    11px;
+
 }
 
 
 .micro-card {
-  padding: 11px;
 
-  border: 1px solid var(--border);
+  padding:
+    11px;
 
-  border-radius: 10px;
+  border:
+    1px solid
+    #d2dcd3;
 
-  background: white;
+  border-radius:
+    10px;
+
+  background:
+    #fff;
+
 }
 
 
 .micro-top {
-  display: flex;
 
-  justify-content: space-between;
+  display:
+    flex;
 
-  gap: 7px;
+  justify-content:
+    space-between;
 
-  font-size: 8px;
+  gap:
+    7px;
+
+  font-size:
+    8px;
+
 }
 
 
 .micro-top span {
-  color: var(--muted);
+
+  color:
+    var(--muted);
+
 }
 
 
 .micro-top strong {
-  color: var(--forest-800);
+
+  color:
+    var(--forest-2);
+
 }
 
 
 .micro-bar {
-  height: 5px;
 
-  margin-top: 7px;
+  height:
+    5px;
 
-  overflow: hidden;
+  margin-top:
+    7px;
 
-  border-radius: 999px;
+  overflow:
+    hidden;
 
-  background: var(--sage-100);
+  border-radius:
+    999px;
+
+  background:
+    #e2e9e1;
+
 }
 
 
 .micro-bar div {
-  height: 100%;
 
-  background: var(--forest-700);
+  height:
+    100%;
+
+  background:
+    var(--forest-3);
+
 }
 
 
-/* =====================================================
-   SUGGESTION
-===================================================== */
 
-.suggestion-box {
-  margin-top: 16px;
+/* ==============================================
+   NOTE / SUGGESTIONS
+============================================== */
 
-  padding: 15px;
+.suggestion-box,
+.data-note {
 
-  border: 1px solid var(--sage-200);
+  margin-top:
+    16px;
 
-  border-radius: 13px;
+  padding:
+    15px;
 
-  background: #f5f8f3;
+  border:
+    1px solid
+    #cfdacf;
+
+  border-radius:
+    13px;
+
+  background:
+    #f3f7f2;
+
 }
 
 
 .suggestion-box h3 {
+
   margin:
     0 0 5px;
 
-  color: var(--forest-900);
+  color:
+    var(--forest);
 
-  font-size: 19px;
+  font-size:
+    19px;
 
-  font-weight: 600;
+  font-weight:
+    600;
+
 }
 
 
-.suggestion-box p {
-  margin: 0;
+.suggestion-box p,
+.data-note p {
 
-  color: var(--text-soft);
+  margin:
+    0;
 
-  font-size: 9px;
+  color:
+    var(--text-2);
 
-  line-height: 1.6;
+  font-size:
+    9px;
+
+  line-height:
+    1.65;
+
 }
 
 
-/* =====================================================
-   CALCULATOR MODAL
-===================================================== */
+.data-note strong {
+
+  font-size:
+    11px;
+
+  color:
+    var(--forest);
+
+}
+
+
+
+/* ==============================================
+   CALCULATOR
+============================================== */
 
 .food-calculator-overlay {
-  position: fixed;
 
-  inset: 0;
+  position:
+    fixed;
 
-  z-index: 1000;
+  inset:
+    0;
 
-  display: none;
+  z-index:
+    1000;
 
-  align-items: center;
-  justify-content: center;
+  display:
+    none;
 
-  padding: 20px;
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    20px;
 
   background:
-    rgba(20,43,33,0.40);
+    rgba(23,56,43,.42);
 
-  backdrop-filter: blur(10px);
+  backdrop-filter:
+    blur(10px);
+
 }
 
 
 .food-calculator-overlay.open {
-  display: flex;
+
+  display:
+    flex;
+
 }
 
 
 .food-calculator {
-  width: min(900px, 100%);
 
-  max-height: 92vh;
+  width:
+    min(920px,100%);
 
-  overflow-y: auto;
+  max-height:
+    92vh;
 
-  display: grid;
+  overflow-y:
+    auto;
+
+  display:
+    grid;
 
   grid-template-columns:
     1fr 305px;
 
-  gap: 17px;
+  gap:
+    17px;
 
-  padding: 22px;
+  padding:
+    22px;
 
-  border: 1px solid var(--border-dark);
+  border:
+    1px solid
+    #b6c5b8;
 
-  border-radius: 27px;
+  border-radius:
+    27px;
 
-  background: var(--ivory);
+  background:
+    #f9faf6;
 
   box-shadow:
+
     0 40px 120px
-    rgba(20,43,33,0.28);
+    rgba(20,43,33,.3);
+
 }
 
 
 .calculator-header {
-  display: flex;
 
-  justify-content: space-between;
+  display:
+    flex;
 
-  align-items: flex-start;
+  justify-content:
+    space-between;
 
-  gap: 15px;
+  align-items:
+    flex-start;
 
-  margin-bottom: 15px;
+  gap:
+    15px;
+
+  margin-bottom:
+    15px;
+
 }
 
 
 .calculator-header h2 {
-  margin: 3px 0 0;
 
-  color: var(--forest-950);
+  margin:
+    3px 0 0;
 
-  font-size: 35px;
+  color:
+    var(--forest);
 
-  font-weight: 600;
+  font-size:
+    36px;
+
+  font-weight:
+    600;
+
 }
 
 
 .calculator-close {
-  width: 37px;
-  height: 37px;
 
-  border: 0;
+  width:
+    37px;
 
-  border-radius: 50%;
+  height:
+    37px;
 
-  color: var(--forest-800);
+  border:
+    0;
 
-  background: var(--sage-100);
+  border-radius:
+    50%;
 
-  font-size: 18px;
+  color:
+    var(--forest);
+
+  background:
+    #e2e9e1;
+
+  font-size:
+    18px;
+
+}
+
+
+.food-meta-line {
+
+  display:
+    flex;
+
+  gap:
+    6px;
+
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    5px;
+
+}
+
+
+.food-meta-line span {
+
+  font-size:
+    8px;
+
+  color:
+    var(--muted);
+
 }
 
 
 .calculator-screen {
-  padding: 18px;
 
-  border: 1px solid var(--sage-200);
+  padding:
+    18px;
 
-  border-radius: 17px;
+  border:
+    1px solid
+    #cad6cb;
+
+  border-radius:
+    17px;
 
   background:
+
     linear-gradient(
       145deg,
       #f9faf6,
-      #edf2eb
+      #eaf0e9
     );
+
 }
 
 
 .calculator-display-top {
-  display: flex;
 
-  justify-content: space-between;
+  display:
+    flex;
 
-  margin-bottom: 14px;
+  justify-content:
+    space-between;
+
+  margin-bottom:
+    14px;
+
 }
 
 
 .calculator-display-top span {
-  color: var(--muted);
 
-  font-size: 9px;
+  color:
+    var(--muted);
+
+  font-size:
+    9px;
+
 }
 
 
 .calculator-display-top strong {
-  color: var(--forest-800);
 
-  font-size: 10px;
+  color:
+    var(--forest-2);
+
+  font-size:
+    10px;
+
 }
 
 
 .calculator-number-display {
+
   padding:
     12px 14px;
 
-  display: flex;
+  display:
+    flex;
 
-  justify-content: space-between;
+  justify-content:
+    space-between;
 
-  align-items: center;
+  align-items:
+    center;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    #cbd6cc;
 
-  border-radius: 11px;
+  border-radius:
+    11px;
 
-  background: white;
+  background:
+    #fff;
+
 }
 
 
 .calculator-number-display span {
-  color: var(--muted);
 
-  font-size: 9px;
+  color:
+    var(--muted);
+
+  font-size:
+    9px;
+
 }
 
 
 .calculator-number-display strong {
-  color: var(--forest-950);
+
+  color:
+    var(--forest);
 
   font-family:
-    "Cormorant Garamond",
-    serif;
+    "Cormorant Garamond";
 
-  font-size: 41px;
+  font-size:
+    42px;
 
-  font-weight: 600;
+  font-weight:
+    600;
+
 }
 
 
+
+/* ==============================================
+   CALCULATOR MACROS
+============================================== */
+
 .live-macros {
-  display: grid;
+
+  display:
+    grid;
 
   grid-template-columns:
-    repeat(4, 1fr);
+    repeat(4,1fr);
 
-  gap: 6px;
+  gap:
+    6px;
 
-  margin-top: 11px;
+  margin-top:
+    11px;
+
 }
 
 
 .live-macro {
-  padding: 9px;
 
-  border-radius: 9px;
+  padding:
+    9px;
+
+  border-radius:
+    9px;
 
   background:
-    rgba(255,255,255,0.82);
+    rgba(255,255,255,.84);
+
 }
 
 
 .live-macro span {
-  display: block;
 
-  color: var(--muted);
+  display:
+    block;
 
-  font-size: 6px;
+  color:
+    var(--muted);
+
+  font-size:
+    6px;
+
 }
 
 
 .live-macro strong {
-  display: block;
 
-  margin-top: 2px;
+  display:
+    block;
 
-  color: var(--forest-800);
+  margin-top:
+    2px;
 
-  font-size: 11px;
+  color:
+    var(--forest-2);
+
+  font-size:
+    11px;
+
 }
 
 
+
+/* ==============================================
+   CALCULATOR OPTIONS
+============================================== */
+
 .calculator-option-group {
-  margin-top: 15px;
+
+  margin-top:
+    15px;
+
 }
 
 
 .calculator-option-group > span {
-  display: block;
 
-  margin-bottom: 7px;
+  display:
+    block;
 
-  color: var(--forest-900);
+  margin-bottom:
+    7px;
 
-  font-size: 9px;
+  color:
+    var(--forest);
 
-  font-weight: 700;
+  font-size:
+    9px;
+
+  font-weight:
+    800;
+
 }
 
 
 .scroll-options {
-  display: flex;
 
-  gap: 6px;
+  display:
+    flex;
 
-  overflow-x: auto;
+  gap:
+    6px;
+
+  overflow-x:
+    auto;
+
+  padding-bottom:
+    3px;
+
 }
 
 
 .option-chip {
-  flex-shrink: 0;
+
+  flex-shrink:
+    0;
 
   padding:
     8px 11px;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    #c8d4ca;
 
-  border-radius: 999px;
+  border-radius:
+    999px;
 
-  color: var(--muted);
+  color:
+    var(--muted);
 
-  background: white;
+  background:
+    #fff;
 
-  font-size: 9px;
+  font-size:
+    9px;
 
-  font-weight: 650;
+  font-weight:
+    700;
+
 }
 
 
 .option-chip.selected {
-  color: white;
 
-  border-color: var(--forest-900);
+  color:
+    #fff;
 
-  background: var(--forest-900);
+  border-color:
+    var(--forest);
+
+  background:
+    var(--forest);
+
 }
 
 
-/* =====================================================
+.calculator-warning {
+
+  margin-top:
+    14px;
+
+  padding:
+    12px;
+
+  border-radius:
+    11px;
+
+  border:
+    1px solid
+    #decda9;
+
+  background:
+    #f8f2e6;
+
+  color:
+    #765721;
+
+  font-size:
+    9px;
+
+  line-height:
+    1.6;
+
+}
+
+
+
+/* ==============================================
    NUMBER PAD
-===================================================== */
+============================================== */
 
 .number-pad-panel {
-  padding: 16px;
 
-  border: 1px solid var(--border);
+  padding:
+    16px;
 
-  border-radius: 18px;
+  border:
+    1px solid
+    #ccd7cd;
 
-  background: #f2f4ee;
+  border-radius:
+    18px;
+
+  background:
+    #f0f3ed;
+
 }
 
 
 .number-pad-title {
-  margin-bottom: 10px;
 
-  color: var(--muted);
+  margin-bottom:
+    10px;
 
-  font-size: 8px;
+  color:
+    var(--muted);
 
-  font-weight: 800;
+  font-size:
+    8px;
 
-  letter-spacing: 0.12em;
+  font-weight:
+    800;
+
+  letter-spacing:
+    .12em;
+
 }
 
 
 .number-pad {
-  display: grid;
+
+  display:
+    grid;
 
   grid-template-columns:
-    repeat(3, 1fr);
+    repeat(3,1fr);
 
-  gap: 7px;
+  gap:
+    7px;
+
 }
 
 
 .num-key {
-  min-height: 57px;
 
-  border: 1px solid var(--border);
+  min-height:
+    57px;
 
-  border-radius: 11px;
+  border:
+    1px solid
+    #cbd6cc;
 
-  color: var(--forest-950);
+  border-radius:
+    11px;
 
-  background: white;
+  color:
+    var(--forest);
 
-  font-size: 17px;
+  background:
+    #fff;
 
-  font-weight: 650;
+  font-size:
+    17px;
+
+  font-weight:
+    700;
+
 }
 
 
 .num-key:hover {
-  background: var(--sage-100);
+
+  background:
+    #e7ede6;
+
 }
 
 
 .num-key:active {
-  transform: scale(0.94);
+
+  transform:
+    scale(.94);
+
 }
 
 
 .num-key.action {
-  color: var(--forest-700);
 
-  background: var(--surface-green);
+  color:
+    var(--forest-3);
+
+  background:
+    #eaf0e9;
+
 }
 
 
-.outline-button {
-  min-height: 43px;
+.keypad-secondary {
 
-  padding: 10px 14px;
+  width:
+    100%;
 
-  border: 1px solid var(--border-dark);
+  margin-top:
+    10px;
 
-  border-radius: 10px;
-
-  color: var(--forest-800);
-
-  background: white;
-
-  font-weight: 650;
 }
 
 
-.add-calculated-food {
-  width: 100%;
+.calculator-add {
 
-  min-height: 49px;
+  width:
+    100%;
 
-  margin-top: 10px;
+  margin-top:
+    10px;
 
-  border: 0;
-
-  border-radius: 11px;
-
-  color: white;
-
-  background: var(--forest-900);
-
-  font-weight: 750;
 }
 
 
-.add-calculated-food:active {
-  transform: scale(0.96);
+.calculator-add:disabled {
+
+  cursor:
+    not-allowed;
+
+  opacity:
+    .48;
+
+  transform:
+    none;
+
 }
 
 
 .calculator-note {
-  color: var(--muted);
 
-  font-size: 7px;
+  color:
+    var(--muted);
 
-  line-height: 1.5;
+  font-size:
+    7px;
+
+  line-height:
+    1.5;
+
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
 
-@media (max-width: 1050px) {
+/* ==============================================
+   RESPONSIVE
+============================================== */
+
+@media(max-width:1080px) {
 
   .quick-food-grid {
+
     grid-template-columns:
-      repeat(3, 1fr);
+      repeat(3,1fr);
+
   }
 
 
   .food-layout {
+
     grid-template-columns:
       1fr;
+
   }
 
 }
 
 
-@media (max-width: 850px) {
+
+@media(max-width:850px) {
 
   .home-hero,
   .diet-hero {
+
     grid-template-columns:
       1fr;
+
   }
 
 
   .goal-grid,
   .diet-choice-grid,
   .dashboard-grid {
+
     grid-template-columns:
-      repeat(2, 1fr);
+      repeat(2,1fr);
+
   }
 
 
   .form-grid {
+
     grid-template-columns:
-      repeat(2, 1fr);
+      repeat(2,1fr);
+
   }
 
 
   .food-calculator {
+
     grid-template-columns:
       1fr;
+
+  }
+
+
+  .target-orbit {
+
+    justify-content:
+      flex-start;
+
   }
 
 }
 
 
-@media (max-width: 620px) {
+
+@media(max-width:620px) {
 
   .navbar {
-    align-items: flex-start;
 
-    flex-direction: column;
+    align-items:
+      flex-start;
 
-    gap: 11px;
+    flex-direction:
+      column;
+
+    gap:
+      11px;
+
   }
 
 
   .nav-links {
-    width: 100%;
+
+    width:
+      100%;
+
   }
 
 
   .nav-link {
-    flex: 1;
 
-    text-align: center;
+    flex:
+      1;
+
+    text-align:
+      center;
+
   }
 
 
   .home-hero,
   .diet-hero {
-    padding: 25px;
+
+    padding:
+      25px;
+
   }
 
 
   .home-hero h1,
   .diet-hero h1 {
-    font-size: 47px;
+
+    font-size:
+      47px;
+
   }
 
 
   .goal-grid,
   .form-grid,
   .diet-choice-grid {
+
     grid-template-columns:
       1fr;
+
   }
 
 
@@ -2314,14 +3448,29 @@ problem on index.html.
   .meal-total-grid,
   .micronutrient-grid,
   .live-macros {
+
     grid-template-columns:
-      repeat(2, 1fr);
+      repeat(2,1fr);
+
   }
 
 
   .quick-food-grid {
+
     grid-template-columns:
-      repeat(2, 1fr);
+      repeat(2,1fr);
+
+  }
+
+
+  .section-heading {
+
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+
   }
 
 }

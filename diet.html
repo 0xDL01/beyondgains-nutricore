@@ -10,9 +10,15 @@
     content="width=device-width, initial-scale=1.0"
   >
 
+  <meta
+    name="description"
+    content="BeyondGains NutriCore diet builder"
+  >
+
   <title>
-    BeyondGains NutriCore — Diet Builder
+    NutriCore — Diet Builder
   </title>
+
 
   <link
     rel="stylesheet"
@@ -74,24 +80,29 @@
 
 <main class="page">
 
+  <!-- ===========================================
+       HERO
+  ============================================ -->
+
   <section class="diet-hero">
 
-    <div>
+    <div class="diet-hero-copy">
 
       <p class="eyebrow">
-        DAILY NUTRITION
+        INDIA & PUNE FOOD LIBRARY
       </p>
 
       <h1>
-        Build your diet from
+        Build your day from
         <span>real food.</span>
       </h1>
 
       <p id="dietTypeDisplay">
 
-        Fruits, vegetables, dals,
-        pulses, sprouts, grains,
-        proteins, Indian meals and drinks.
+        Search fresh produce, dals, sprouts,
+        milk, curd, paneer, fish, eggs,
+        grains, Indian meals and Pune-relevant
+        branded dairy products.
 
       </p>
 
@@ -99,27 +110,27 @@
       <div class="diet-badges">
 
         <span>
-          Fruits
+          Indian Produce
         </span>
 
         <span>
-          Vegetables
+          Dals & Sprouts
         </span>
 
         <span>
-          Dals & Pulses
+          Dairy & Paneer
         </span>
 
         <span>
-          Sprouts
+          Fish & Seafood
         </span>
 
         <span>
-          Protein
+          Coffee & Tea
         </span>
 
         <span>
-          Indian Meals
+          Brand Labels
         </span>
 
       </div>
@@ -127,12 +138,13 @@
     </div>
 
 
+
     <div class="target-orbit">
 
       <div class="target-ring">
 
         <span>
-          Daily energy
+          Daily target
         </span>
 
         <strong id="targetCalories">
@@ -151,13 +163,17 @@
 
 
 
+  <!-- ===========================================
+       TARGETS
+  ============================================ -->
+
   <section class="dashboard-grid">
 
-    <article class="dashboard-card">
+    <article class="dashboard-card featured-dashboard">
 
-      <div class="dashboard-icon">
+      <span class="dashboard-icon">
         P
-      </div>
+      </span>
 
       <div>
 
@@ -169,6 +185,10 @@
           —
         </strong>
 
+        <small>
+          daily target
+        </small>
+
       </div>
 
     </article>
@@ -176,20 +196,24 @@
 
     <article class="dashboard-card">
 
-      <div class="dashboard-icon">
+      <span class="dashboard-icon">
         C
-      </div>
+      </span>
 
       <div>
 
         <span>
-          Carbohydrates
+          Carbs
         </span>
 
         <strong id="targetCarbs">
           —
         </strong>
 
+        <small>
+          daily target
+        </small>
+
       </div>
 
     </article>
@@ -197,9 +221,9 @@
 
     <article class="dashboard-card">
 
-      <div class="dashboard-icon">
+      <span class="dashboard-icon">
         F
-      </div>
+      </span>
 
       <div>
 
@@ -211,6 +235,10 @@
           —
         </strong>
 
+        <small>
+          daily target
+        </small>
+
       </div>
 
     </article>
@@ -218,9 +246,9 @@
 
     <article class="dashboard-card">
 
-      <div class="dashboard-icon">
+      <span class="dashboard-icon">
         Fi
-      </div>
+      </span>
 
       <div>
 
@@ -232,6 +260,10 @@
           —
         </strong>
 
+        <small>
+          daily target
+        </small>
+
       </div>
 
     </article>
@@ -239,6 +271,10 @@
   </section>
 
 
+
+  <!-- ===========================================
+       QUICK
+  ============================================ -->
 
   <section class="quick-section">
 
@@ -251,13 +287,15 @@
         </p>
 
         <h2>
-          Everyday foods
+          Everyday choices
         </h2>
 
       </div>
 
+
       <p>
-        Select a food to calculate your serving.
+        Select an item to configure the amount,
+        preparation or drink size before adding it.
       </p>
 
     </div>
@@ -271,6 +309,10 @@
   </section>
 
 
+
+  <!-- ===========================================
+       FOOD + TODAY
+  ============================================ -->
 
   <section class="food-layout">
 
@@ -310,7 +352,7 @@
         <input
           id="foodSearch"
           type="search"
-          placeholder="Search moong, sprouts, peas, mango, chicken..."
+          placeholder="Search Amul, Chitale, Katraj, mango, moong, Rawas..."
         >
 
       </div>
@@ -352,7 +394,7 @@
           id="clearMealButton"
           class="clear-button"
         >
-          Clear
+          Clear all
         </button>
 
       </div>
@@ -364,9 +406,10 @@
       ></div>
 
 
+
       <div class="meal-total-grid">
 
-        <div class="meal-total">
+        <article class="meal-total">
 
           <span>
             CALORIES
@@ -376,10 +419,10 @@
             0 kcal
           </strong>
 
-        </div>
+        </article>
 
 
-        <div class="meal-total">
+        <article class="meal-total protein-total">
 
           <span>
             PROTEIN
@@ -389,10 +432,10 @@
             0 g
           </strong>
 
-        </div>
+        </article>
 
 
-        <div class="meal-total">
+        <article class="meal-total">
 
           <span>
             CARBS
@@ -402,10 +445,10 @@
             0 g
           </strong>
 
-        </div>
+        </article>
 
 
-        <div class="meal-total">
+        <article class="meal-total">
 
           <span>
             FAT
@@ -415,9 +458,10 @@
             0 g
           </strong>
 
-        </div>
+        </article>
 
       </div>
+
 
 
       <div class="progress-card">
@@ -455,6 +499,7 @@
       </div>
 
 
+
       <div class="progress-card">
 
         <div class="progress-label">
@@ -482,12 +527,13 @@
 
           <div
             id="proteinProgressBar"
-            class="progress-bar"
+            class="progress-bar protein-bar"
           ></div>
 
         </div>
 
       </div>
+
 
 
       <div class="micro-heading">
@@ -518,9 +564,29 @@
 
   </section>
 
+
+
+  <section class="data-note">
+
+    <strong>
+     
+    </strong>
+
+    <p>
+
+     
+
+    </p>
+
+  </section>
+
 </main>
 
 
+
+<!-- ===============================================
+     FOOD CALCULATOR
+================================================ -->
 
 <div
   id="foodCalculatorOverlay"
@@ -529,7 +595,7 @@
 
   <div class="food-calculator">
 
-    <div>
+    <div class="calculator-main">
 
       <div class="calculator-header">
 
@@ -542,6 +608,15 @@
           <h2 id="calculatorFoodName">
             Food
           </h2>
+
+
+          <div class="food-meta-line">
+
+            <span id="calculatorBrand"></span>
+
+            <span id="calculatorStatus"></span>
+
+          </div>
 
         </div>
 
@@ -556,12 +631,13 @@
       </div>
 
 
+
       <div class="calculator-screen">
 
         <div class="calculator-display-top">
 
           <span id="calculatorFoodDescription">
-            Serving
+            Configure serving
           </span>
 
           <strong id="calculatorUnitLabel">
@@ -571,9 +647,10 @@
         </div>
 
 
+
         <div class="calculator-number-display">
 
-          <span>
+          <span id="calculatorQuantityLabel">
             Quantity
           </span>
 
@@ -582,6 +659,7 @@
           </strong>
 
         </div>
+
 
 
         <div class="live-macros">
@@ -644,16 +722,23 @@
 
       <div
         id="calculatorOptions"
+        class="calculator-options"
+      ></div>
+
+
+      <div
+        id="calculatorWarning"
+        class="calculator-warning hidden"
       ></div>
 
     </div>
 
 
 
-    <div class="number-pad-panel">
+    <aside class="number-pad-panel">
 
       <div class="number-pad-title">
-        QUANTITY
+        AMOUNT
       </div>
 
 
@@ -697,8 +782,7 @@
 
       <button
         id="calculatorClear"
-        class="outline-button"
-        style="width:100%; margin-top:10px;"
+        class="secondary-button keypad-secondary"
       >
         Clear
       </button>
@@ -706,7 +790,7 @@
 
       <button
         id="calculatorAdd"
-        class="add-calculated-food"
+        class="primary-button calculator-add"
       >
         Add to Today
       </button>
@@ -714,16 +798,17 @@
 
       <p class="calculator-note">
 
-        Values are estimates and can vary with
-        size, preparation and product.
+        Nutrition can vary by size,
+        recipe and current product label.
 
       </p>
 
-    </div>
+    </aside>
 
   </div>
 
 </div>
+
 
 
 <script
@@ -732,5 +817,4 @@
 ></script>
 
 </body>
-
 </html>
